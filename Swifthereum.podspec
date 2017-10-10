@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Swifthereum'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Swifthereum.'
+  s.summary          = 'A native iOS and MacOS Swift wrapper for Geth (Go Ethereum).'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,17 +18,20 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Swifthereum is a native Swift iOS and MacOS library to use Go Ethereum (Geth). Swifthereum wraps the Go interface into a Swift-friendly framework for easy and fast development of Swift-native dApps.
+
+Swifthereum includes support for ERC-20 tokens and provides a download option to download a list of the latest tokens.
                        DESC
 
-  s.homepage         = 'https://github.com/git/Swifthereum'
+  s.homepage         = 'https://github.com/IndisputableLabs/Swifthereum'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'git' => 'ronaldmannak@me.com' }
-  s.source           = { :git => 'https://github.com/git/Swifthereum.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.authors           = { 'Ronald Mannak' => 'ronald@indisputable.io' }
+  s.source           = { :git => 'https://github.com/IndisputableLabs/Swifthereum.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/ronaldmannak'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
+  #spec.osx.deployment_target  = '10.10'
 
   s.source_files = 'Swifthereum/Classes/**/*'
   
@@ -38,5 +41,7 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'BigInt', '~> 3.0.0'
+  s.dependency 'Geth' 
+  #, '~> 1.7.2-unstable.11141'
 end
