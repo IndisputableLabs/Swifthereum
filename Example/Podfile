@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Swifthereum_Example' do
+  pod 'Swifthereum', :path => '../'
+
+  target 'Swifthereum_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
