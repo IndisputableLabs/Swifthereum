@@ -1,0 +1,711 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13CE7E9A347BB442ECF6DA74F7B41F9B /* Pods-Swifthereum_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D79791D0EC8BE75DB4B347D0BA9EA4 /* Pods-Swifthereum_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2078E1C59F44F679812AB96BE884D68F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		25E6E920CBE4C04A94E6CD3678BE360F /* Pods-Swifthereum_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DB15EE6E93C640BE30D4847326176017 /* Pods-Swifthereum_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E702865602C0759A79CB847D47FB834 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C0AAACDC112B3492B01F033D53362 /* ReplaceMe.swift */; };
+		57F9555FCFE50A32A4024E8133AE66E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		883E4F7BB6C345F97288F1B097ACE546 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		99BFAE191ED747BFDE9FCCA441578018 /* Pods-Swifthereum_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DE342DE5FD9AAED00AA5C4B9E888CE /* Pods-Swifthereum_Example-dummy.m */; };
+		9C3656BAECDB250C62A2F485202EAB10 /* Swifthereum-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FA45206F68D1ACCEFC46EC9250BA981D /* Swifthereum-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A582A60C9FBF460A7C2A4916732EF4E9 /* Pods-Swifthereum_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 955A70C9F3F5BE6C347153301A84F9AB /* Pods-Swifthereum_Tests-dummy.m */; };
+		F6FCD06F936D01E132F1D83F1AE87021 /* Swifthereum-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7213AE72EF1CD2CA9A615374DD6211B7 /* Swifthereum-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C85769DAD65FA3358DF1E14FF9B5640 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C13773A6FDF70E880B9EBC013087E42;
+			remoteInfo = Swifthereum;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16AD957A3FF435D558BF75C9692800B4 /* Pods-Swifthereum_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Swifthereum_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1B0F8CC3F95271EA0B27926091DC0FF1 /* Pods-Swifthereum_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Swifthereum_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		277DF06661CD630206E542E3565C2FBD /* Pods-Swifthereum_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Swifthereum_Example-frameworks.sh"; sourceTree = "<group>"; };
+		31F07EB4ED2574DCA5B71829C0BCF7BF /* Pods-Swifthereum_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Swifthereum_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		378B0B2580F5DC43BCFBB5279EA6CD2C /* Pods-Swifthereum_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Swifthereum_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		52CED292CB4AB10E88FA0B000480B7CD /* Pods-Swifthereum_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Swifthereum_Example-resources.sh"; sourceTree = "<group>"; };
+		5ACE54A6FEA67006D23A1682E1F3F7A1 /* Swifthereum.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Swifthereum.xcconfig; sourceTree = "<group>"; };
+		5B92CE7594E3468E04DE27D99BC6DA43 /* Swifthereum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Swifthereum.framework; path = Swifthereum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		711C0AAACDC112B3492B01F033D53362 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Swifthereum/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		7213AE72EF1CD2CA9A615374DD6211B7 /* Swifthereum-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Swifthereum-dummy.m"; sourceTree = "<group>"; };
+		7911D66F54FCEAFDA634F0052969EABC /* Pods-Swifthereum_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Swifthereum_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A8947606BCF292BFFDA7F0893591A96 /* Pods-Swifthereum_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Swifthereum_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		87531659FD1F09039B6226877684CF3D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		955A70C9F3F5BE6C347153301A84F9AB /* Pods-Swifthereum_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Swifthereum_Tests-dummy.m"; sourceTree = "<group>"; };
+		99E52B377A174B2A3E2ADE91092176D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2D79791D0EC8BE75DB4B347D0BA9EA4 /* Pods-Swifthereum_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Swifthereum_Example-umbrella.h"; sourceTree = "<group>"; };
+		AFE2DF911E73072E53560C1693C0C546 /* Pods_Swifthereum_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Swifthereum_Tests.framework; path = "Pods-Swifthereum_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0A6775B23EC4DF7675753D2892DC2D9 /* Swifthereum.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Swifthereum.modulemap; sourceTree = "<group>"; };
+		B39A92E53031495C3B560EB1C2BC5DCA /* Pods-Swifthereum_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Swifthereum_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		B8AF7269AA4DD99D96E7998D70EC3689 /* Pods-Swifthereum_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Swifthereum_Tests-resources.sh"; sourceTree = "<group>"; };
+		C300E8199BEDB7C2A1CFB1A567C427B7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3DE342DE5FD9AAED00AA5C4B9E888CE /* Pods-Swifthereum_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Swifthereum_Example-dummy.m"; sourceTree = "<group>"; };
+		C46020CB667CBEA2EAD9330BAF637FEA /* Swifthereum-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Swifthereum-prefix.pch"; sourceTree = "<group>"; };
+		D976AA43B183F6B4F206C159914B7AC8 /* Pods_Swifthereum_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Swifthereum_Example.framework; path = "Pods-Swifthereum_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB15EE6E93C640BE30D4847326176017 /* Pods-Swifthereum_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Swifthereum_Tests-umbrella.h"; sourceTree = "<group>"; };
+		DF4E19118FEF500048C0E41F8449C227 /* Pods-Swifthereum_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Swifthereum_Example.modulemap"; sourceTree = "<group>"; };
+		E21E8511C76B99CCE448018C0EC7DFCB /* Pods-Swifthereum_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Swifthereum_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		E6626DE3C1ED6EC9471AC2474304FE37 /* Pods-Swifthereum_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Swifthereum_Tests.modulemap"; sourceTree = "<group>"; };
+		F065010021B065111B9C4F40F0945A36 /* Pods-Swifthereum_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Swifthereum_Example.release.xcconfig"; sourceTree = "<group>"; };
+		FA45206F68D1ACCEFC46EC9250BA981D /* Swifthereum-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Swifthereum-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E4C6838972DB9B2091EF59BBAE17A41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				883E4F7BB6C345F97288F1B097ACE546 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D09C4EDF975C552CB76D11563D94126 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2078E1C59F44F679812AB96BE884D68F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8E1DD47EF4958D0501F6122863CB5EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57F9555FCFE50A32A4024E8133AE66E6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E39A1342C7887AEA2232DE352B9D2FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D976AA43B183F6B4F206C159914B7AC8 /* Pods_Swifthereum_Example.framework */,
+				AFE2DF911E73072E53560C1693C0C546 /* Pods_Swifthereum_Tests.framework */,
+				5B92CE7594E3468E04DE27D99BC6DA43 /* Swifthereum.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76E8ADA36BBB1AEF0B50F46D095012E2 /* Pods-Swifthereum_Example */ = {
+			isa = PBXGroup;
+			children = (
+				99E52B377A174B2A3E2ADE91092176D8 /* Info.plist */,
+				DF4E19118FEF500048C0E41F8449C227 /* Pods-Swifthereum_Example.modulemap */,
+				31F07EB4ED2574DCA5B71829C0BCF7BF /* Pods-Swifthereum_Example-acknowledgements.markdown */,
+				E21E8511C76B99CCE448018C0EC7DFCB /* Pods-Swifthereum_Example-acknowledgements.plist */,
+				C3DE342DE5FD9AAED00AA5C4B9E888CE /* Pods-Swifthereum_Example-dummy.m */,
+				277DF06661CD630206E542E3565C2FBD /* Pods-Swifthereum_Example-frameworks.sh */,
+				52CED292CB4AB10E88FA0B000480B7CD /* Pods-Swifthereum_Example-resources.sh */,
+				A2D79791D0EC8BE75DB4B347D0BA9EA4 /* Pods-Swifthereum_Example-umbrella.h */,
+				378B0B2580F5DC43BCFBB5279EA6CD2C /* Pods-Swifthereum_Example.debug.xcconfig */,
+				F065010021B065111B9C4F40F0945A36 /* Pods-Swifthereum_Example.release.xcconfig */,
+			);
+			name = "Pods-Swifthereum_Example";
+			path = "Target Support Files/Pods-Swifthereum_Example";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BA3EFE4AD8FCFBBE48B2D25BDFC8E33D /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				0E39A1342C7887AEA2232DE352B9D2FF /* Products */,
+				ABF45AD68EF3D709372F8B5501B1B6AA /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		ABF45AD68EF3D709372F8B5501B1B6AA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				76E8ADA36BBB1AEF0B50F46D095012E2 /* Pods-Swifthereum_Example */,
+				BB299FD4E6296185A806B20E25F225EF /* Pods-Swifthereum_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BA3EFE4AD8FCFBBE48B2D25BDFC8E33D /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8054834E39F78FBA6DD9C6A93124FE8 /* Swifthereum */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		BB299FD4E6296185A806B20E25F225EF /* Pods-Swifthereum_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C300E8199BEDB7C2A1CFB1A567C427B7 /* Info.plist */,
+				E6626DE3C1ED6EC9471AC2474304FE37 /* Pods-Swifthereum_Tests.modulemap */,
+				16AD957A3FF435D558BF75C9692800B4 /* Pods-Swifthereum_Tests-acknowledgements.markdown */,
+				7A8947606BCF292BFFDA7F0893591A96 /* Pods-Swifthereum_Tests-acknowledgements.plist */,
+				955A70C9F3F5BE6C347153301A84F9AB /* Pods-Swifthereum_Tests-dummy.m */,
+				B39A92E53031495C3B560EB1C2BC5DCA /* Pods-Swifthereum_Tests-frameworks.sh */,
+				B8AF7269AA4DD99D96E7998D70EC3689 /* Pods-Swifthereum_Tests-resources.sh */,
+				DB15EE6E93C640BE30D4847326176017 /* Pods-Swifthereum_Tests-umbrella.h */,
+				7911D66F54FCEAFDA634F0052969EABC /* Pods-Swifthereum_Tests.debug.xcconfig */,
+				1B0F8CC3F95271EA0B27926091DC0FF1 /* Pods-Swifthereum_Tests.release.xcconfig */,
+			);
+			name = "Pods-Swifthereum_Tests";
+			path = "Target Support Files/Pods-Swifthereum_Tests";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D9853057D5B772371DD6E11232B7A2C4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				87531659FD1F09039B6226877684CF3D /* Info.plist */,
+				B0A6775B23EC4DF7675753D2892DC2D9 /* Swifthereum.modulemap */,
+				5ACE54A6FEA67006D23A1682E1F3F7A1 /* Swifthereum.xcconfig */,
+				7213AE72EF1CD2CA9A615374DD6211B7 /* Swifthereum-dummy.m */,
+				C46020CB667CBEA2EAD9330BAF637FEA /* Swifthereum-prefix.pch */,
+				FA45206F68D1ACCEFC46EC9250BA981D /* Swifthereum-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Swifthereum";
+			sourceTree = "<group>";
+		};
+		F8054834E39F78FBA6DD9C6A93124FE8 /* Swifthereum */ = {
+			isa = PBXGroup;
+			children = (
+				711C0AAACDC112B3492B01F033D53362 /* ReplaceMe.swift */,
+				D9853057D5B772371DD6E11232B7A2C4 /* Support Files */,
+			);
+			name = Swifthereum;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		050CDF18B9D90EF5396FE07DA1E4ABC0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25E6E920CBE4C04A94E6CD3678BE360F /* Pods-Swifthereum_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		790DE8B17E170D7962811A255E01B924 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C3656BAECDB250C62A2F485202EAB10 /* Swifthereum-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4BB02AC658EF49C93667BBBA14E1888 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CE7E9A347BB442ECF6DA74F7B41F9B /* Pods-Swifthereum_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		746823EDB0488E0D45BBDB4557E8D5F2 /* Pods-Swifthereum_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D8409E31CB707C2638F330CD04D4D04 /* Build configuration list for PBXNativeTarget "Pods-Swifthereum_Example" */;
+			buildPhases = (
+				39E11EEB60950789C2236A8FD0705423 /* Sources */,
+				D8E1DD47EF4958D0501F6122863CB5EA /* Frameworks */,
+				C4BB02AC658EF49C93667BBBA14E1888 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8361E5A573BE8DDA144215F4B546845 /* PBXTargetDependency */,
+			);
+			name = "Pods-Swifthereum_Example";
+			productName = "Pods-Swifthereum_Example";
+			productReference = D976AA43B183F6B4F206C159914B7AC8 /* Pods_Swifthereum_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8C13773A6FDF70E880B9EBC013087E42 /* Swifthereum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0E82561AE22ACFDCD09F695C0112129 /* Build configuration list for PBXNativeTarget "Swifthereum" */;
+			buildPhases = (
+				34DFE1A6715D4442512BD97E305815E5 /* Sources */,
+				6E4C6838972DB9B2091EF59BBAE17A41 /* Frameworks */,
+				790DE8B17E170D7962811A255E01B924 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swifthereum;
+			productName = Swifthereum;
+			productReference = 5B92CE7594E3468E04DE27D99BC6DA43 /* Swifthereum.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BA5AD78CBEC11EBF0CDA803DD80F3C0B /* Pods-Swifthereum_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB09BD67215AB7E362A79F3530D051B7 /* Build configuration list for PBXNativeTarget "Pods-Swifthereum_Tests" */;
+			buildPhases = (
+				A251038E066D14DDB2A45C579B5323B1 /* Sources */,
+				9D09C4EDF975C552CB76D11563D94126 /* Frameworks */,
+				050CDF18B9D90EF5396FE07DA1E4ABC0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Swifthereum_Tests";
+			productName = "Pods-Swifthereum_Tests";
+			productReference = AFE2DF911E73072E53560C1693C0C546 /* Pods_Swifthereum_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 0E39A1342C7887AEA2232DE352B9D2FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				746823EDB0488E0D45BBDB4557E8D5F2 /* Pods-Swifthereum_Example */,
+				BA5AD78CBEC11EBF0CDA803DD80F3C0B /* Pods-Swifthereum_Tests */,
+				8C13773A6FDF70E880B9EBC013087E42 /* Swifthereum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34DFE1A6715D4442512BD97E305815E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E702865602C0759A79CB847D47FB834 /* ReplaceMe.swift in Sources */,
+				F6FCD06F936D01E132F1D83F1AE87021 /* Swifthereum-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39E11EEB60950789C2236A8FD0705423 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99BFAE191ED747BFDE9FCCA441578018 /* Pods-Swifthereum_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A251038E066D14DDB2A45C579B5323B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A582A60C9FBF460A7C2A4916732EF4E9 /* Pods-Swifthereum_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8361E5A573BE8DDA144215F4B546845 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Swifthereum;
+			target = 8C13773A6FDF70E880B9EBC013087E42 /* Swifthereum */;
+			targetProxy = 9C85769DAD65FA3358DF1E14FF9B5640 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0C6195748277A0ABC3AAF7482BE5BAC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7911D66F54FCEAFDA634F0052969EABC /* Pods-Swifthereum_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Swifthereum_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Swifthereum_Tests/Pods-Swifthereum_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Swifthereum_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5894879AF560D0E6FC14F260DFD98D1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ACE54A6FEA67006D23A1682E1F3F7A1 /* Swifthereum.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Swifthereum/Swifthereum-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Swifthereum/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Swifthereum/Swifthereum.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Swifthereum;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C1E889D6BCEB061DE5B1BE0E6E3AEC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 378B0B2580F5DC43BCFBB5279EA6CD2C /* Pods-Swifthereum_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Swifthereum_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Swifthereum_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F059C87385F0D7F55B4DA8FFFEFE0C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ACE54A6FEA67006D23A1682E1F3F7A1 /* Swifthereum.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Swifthereum/Swifthereum-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Swifthereum/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Swifthereum/Swifthereum.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Swifthereum;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D2D5C103982F31DE623DAEA7729B803B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B0F8CC3F95271EA0B27926091DC0FF1 /* Pods-Swifthereum_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Swifthereum_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Swifthereum_Tests/Pods-Swifthereum_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Swifthereum_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D841B927619A1CA311F4A45DC272E117 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F065010021B065111B9C4F40F0945A36 /* Pods-Swifthereum_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Swifthereum_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Swifthereum_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EED546DBB23FC32035C9BDC4E22B30BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EED546DBB23FC32035C9BDC4E22B30BD /* Debug */,
+				157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D8409E31CB707C2638F330CD04D4D04 /* Build configuration list for PBXNativeTarget "Pods-Swifthereum_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C1E889D6BCEB061DE5B1BE0E6E3AEC5 /* Debug */,
+				D841B927619A1CA311F4A45DC272E117 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0E82561AE22ACFDCD09F695C0112129 /* Build configuration list for PBXNativeTarget "Swifthereum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F059C87385F0D7F55B4DA8FFFEFE0C5 /* Debug */,
+				5894879AF560D0E6FC14F260DFD98D1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB09BD67215AB7E362A79F3530D051B7 /* Build configuration list for PBXNativeTarget "Pods-Swifthereum_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C6195748277A0ABC3AAF7482BE5BAC3 /* Debug */,
+				D2D5C103982F31DE623DAEA7729B803B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
