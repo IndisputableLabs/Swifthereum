@@ -42,6 +42,5 @@ Swifthereum includes support for ERC-20 tokens and provides a download option to
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'BigInt', '~> 3.0.0'
-  s.dependency 'Geth' 
-  #, '~> 1.7.2-unstable.11141'
+  s.dependency 'Geth', '~> 1.7.1'
 end

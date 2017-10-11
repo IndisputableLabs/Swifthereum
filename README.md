@@ -21,12 +21,15 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-Swifthereum is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+~~Swifthereum is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Swifthereum'
 ```
+~~
+
+**Update**: As Geth is currently a static framework, Cocoapods is unsupported. For now, please manually copy the files into your project. This issue is tracked as Geth issue [#15272](https://github.com/ethereum/go-ethereum/issues/15272).
+
 
 ## Usage
 
