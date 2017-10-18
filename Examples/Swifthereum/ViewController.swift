@@ -26,9 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startNode()
-        syncTimer = Timer(timeInterval: 1, repeats: true) { timer in
-            self.updateSyncProgress()
-        }
+        syncTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateSyncProgress), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,9 +57,14 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateSyncProgress() {
+    @objc func updateSyncProgress() {
         guard let progress = client?.syncProgress() else {
-            syncProgressLabel.text = "Node is not Syncing"
+            // Node is not syncing
+            if let client = client, let block = try? client.block(byNumber: -1) {
+                syncProgressLabel.text = "Node is not Syncing. Last block #\(block.number)"
+            } else {
+                syncProgressLabel.text = "Node is not Syncing"
+            }
             return
         }
         syncProgressLabel.text = "Sync \(progress.percentage * 100)% complete"
