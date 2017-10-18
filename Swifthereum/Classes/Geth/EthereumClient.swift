@@ -92,7 +92,8 @@ open class EthereumClient {
         if let token = token {
             fatalError() // TODO:
         } else {
-            return try Wei(_gethEthereumClient.getBalanceAt(context._gethContext, account: account._gethAddress, number: block))
+            let balance = try _gethEthereumClient.getBalanceAt(context._gethContext, account: account._gethAddress, number: block)
+            return Wei(balance)
         }
     }
     

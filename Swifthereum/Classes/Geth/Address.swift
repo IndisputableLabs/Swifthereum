@@ -45,8 +45,13 @@ public struct Address {
     }
     
     public init(qrCode: String) throws {
-        guard qrCode.hasPrefix("ethereum:"), let index = qrCode.range(of: "ethereum:")?.upperBound else { throw SwifthereumError.invalidAddress }
-        let hex = String(qrCode[index...])
+        // QR codes can have ethereum: prefix but some, like MyEtherWallet, don't.
+        let hex: String
+        if qrCode.hasPrefix("ethereum:"), let index = qrCode.range(of: "ethereum:")?.upperBound {
+            hex = String(qrCode[index...])
+        } else {
+            hex = qrCode
+        }
         try self.init(hex: hex)
     }
     

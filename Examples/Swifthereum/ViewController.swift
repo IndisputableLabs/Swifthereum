@@ -85,8 +85,13 @@ extension ViewController: QRCodeProtocol {
         dismiss(animated: true){}
         addressLabel.text = address.description
 
-        if let balance = try? client?.balance(for: address), let balanceString = balance?.formattedBalance(unit: .ether) {
-            ethBalanceLabel.text = "\(balanceString.description) ETH"
+        do {
+            if let balance = try client?.balance(for: Address(hex: "0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")) {
+                let balanceString = balance.formattedBalance(unit: .ether)
+                ethBalanceLabel.text = "\(balanceString.description) ETH"
+            }
+        } catch {
+            errorLabel.text = error.localizedDescription
         }
     }
     
