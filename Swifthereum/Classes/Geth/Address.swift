@@ -44,6 +44,13 @@ public struct Address {
         try _gethAddress.setBytes(bytes)
     }
     
+    public init(qrCode: String) throws {
+        guard qrCode.hasPrefix("ethereum:"), let index = qrCode.range(of: "ethereum:")?.upperBound else { throw SwifthereumError.invalidAddress }
+        let hex = String(qrCode[index...])
+        try self.init(hex: hex)
+    }
+    
+    
     /**
      - parameter hex: hexadecimal representation of the address in String format
      - throws: A Geth error

@@ -1,0 +1,831 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		129C5F4B037E115AE5D69A15 /* Pods_Swifthereum_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9AE6244049127794044053D /* Pods_Swifthereum_Tests.framework */; };
+		4D8CCDE104357E643D978F24 /* Pods_Swifthereum_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C7C72026F20B9F276340F5 /* Pods_Swifthereum_Example.framework */; };
+		5295A4B21F97185B00B31055 /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A61F97185000B31055 /* BigInt.swift */; };
+		5295A4B31F97185B00B31055 /* GethAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A71F97185000B31055 /* GethAddresses.swift */; };
+		5295A4B41F97185B00B31055 /* GethBigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A81F97185000B31055 /* GethBigInt.swift */; };
+		5295A4B51F97185B00B31055 /* GethHashes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A91F97185000B31055 /* GethHashes.swift */; };
+		5295A4B61F97185B00B31055 /* GethHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4AA1F97185000B31055 /* GethHeaders.swift */; };
+		5295A4B71F97185B00B31055 /* GethLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4AB1F97185000B31055 /* GethLogs.swift */; };
+		5295A4B81F97185B00B31055 /* GethPeerInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4AC1F97185000B31055 /* GethPeerInfos.swift */; };
+		5295A4B91F97185B00B31055 /* GethStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4AD1F97185000B31055 /* GethStrings.swift */; };
+		5295A4BA1F97185B00B31055 /* GethTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4AE1F97185000B31055 /* GethTopics.swift */; };
+		5295A4BB1F97185B00B31055 /* GethTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4AF1F97185000B31055 /* GethTransactions.swift */; };
+		5295A4BC1F97185B00B31055 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4B01F97185000B31055 /* String.swift */; };
+		5295A4BD1F97185B00B31055 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4B11F97185000B31055 /* TimeInterval.swift */; };
+		5295A4BE1F97186000B31055 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4871F97185000B31055 /* Account.swift */; };
+		5295A4BF1F97186000B31055 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4881F97185000B31055 /* Address.swift */; };
+		5295A4C01F97186000B31055 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4891F97185000B31055 /* Block.swift */; };
+		5295A4C11F97186000B31055 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A48A1F97185000B31055 /* Bloom.swift */; };
+		5295A4C21F97186000B31055 /* ChainID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A48B1F97185000B31055 /* ChainID.swift */; };
+		5295A4C31F97186000B31055 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A48C1F97185000B31055 /* Context.swift */; };
+		5295A4C41F97186000B31055 /* ERC20Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A48D1F97185000B31055 /* ERC20Token.swift */; };
+		5295A4C51F97186000B31055 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A48E1F97185000B31055 /* Error.swift */; };
+		5295A4C61F97186000B31055 /* EthereumClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A48F1F97185000B31055 /* EthereumClient.swift */; };
+		5295A4C71F97186000B31055 /* FilterQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4901F97185000B31055 /* FilterQuery.swift */; };
+		5295A4C81F97186000B31055 /* Geth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4911F97185000B31055 /* Geth.swift */; };
+		5295A4C91F97186000B31055 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4921F97185000B31055 /* Hash.swift */; };
+		5295A4CA1F97186000B31055 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4931F97185000B31055 /* Header.swift */; };
+		5295A4CB1F97186000B31055 /* KeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4941F97185000B31055 /* KeyStore.swift */; };
+		5295A4CC1F97186000B31055 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4951F97185000B31055 /* Log.swift */; };
+		5295A4CD1F97186000B31055 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4961F97185000B31055 /* Message.swift */; };
+		5295A4CE1F97186000B31055 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4971F97185000B31055 /* Node.swift */; };
+		5295A4CF1F97186000B31055 /* NodeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4981F97185000B31055 /* NodeConfig.swift */; };
+		5295A4D01F97186000B31055 /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4991F97185000B31055 /* NodeInfo.swift */; };
+		5295A4D11F97186000B31055 /* Nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A49A1F97185000B31055 /* Nonce.swift */; };
+		5295A4D21F97186000B31055 /* PeerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A49B1F97185000B31055 /* PeerInfo.swift */; };
+		5295A4D31F97186000B31055 /* SyncProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A49C1F97185000B31055 /* SyncProgress.swift */; };
+		5295A4D41F97186000B31055 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A49D1F97185000B31055 /* Transaction.swift */; };
+		5295A4D51F97186000B31055 /* TransactOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A49E1F97185000B31055 /* TransactOptions.swift */; };
+		5295A4D61F97186500B31055 /* BlockNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A01F97185000B31055 /* BlockNumber.swift */; };
+		5295A4D71F97186500B31055 /* Gas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A11F97185000B31055 /* Gas.swift */; };
+		5295A4D81F97186500B31055 /* JSONDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A21F97185000B31055 /* JSONDictionary.swift */; };
+		5295A4D91F97186500B31055 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A31F97185000B31055 /* Topic.swift */; };
+		5295A4DA1F97186500B31055 /* Wei.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4A41F97185000B31055 /* Wei.swift */; };
+		5295A4DC1F9721D200B31055 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A4DB1F9721D200B31055 /* QRScannerViewController.swift */; };
+		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
+		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
+		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
+		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = Swifthereum;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E656FA4073022E31C86F318 /* Pods-Swifthereum_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifthereum_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5295A4871F97185000B31055 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		5295A4881F97185000B31055 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		5295A4891F97185000B31055 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		5295A48A1F97185000B31055 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
+		5295A48B1F97185000B31055 /* ChainID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainID.swift; sourceTree = "<group>"; };
+		5295A48C1F97185000B31055 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		5295A48D1F97185000B31055 /* ERC20Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20Token.swift; sourceTree = "<group>"; };
+		5295A48E1F97185000B31055 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		5295A48F1F97185000B31055 /* EthereumClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumClient.swift; sourceTree = "<group>"; };
+		5295A4901F97185000B31055 /* FilterQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterQuery.swift; sourceTree = "<group>"; };
+		5295A4911F97185000B31055 /* Geth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geth.swift; sourceTree = "<group>"; };
+		5295A4921F97185000B31055 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
+		5295A4931F97185000B31055 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		5295A4941F97185000B31055 /* KeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStore.swift; sourceTree = "<group>"; };
+		5295A4951F97185000B31055 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		5295A4961F97185000B31055 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5295A4971F97185000B31055 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		5295A4981F97185000B31055 /* NodeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeConfig.swift; sourceTree = "<group>"; };
+		5295A4991F97185000B31055 /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
+		5295A49A1F97185000B31055 /* Nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonce.swift; sourceTree = "<group>"; };
+		5295A49B1F97185000B31055 /* PeerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerInfo.swift; sourceTree = "<group>"; };
+		5295A49C1F97185000B31055 /* SyncProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncProgress.swift; sourceTree = "<group>"; };
+		5295A49D1F97185000B31055 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		5295A49E1F97185000B31055 /* TransactOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactOptions.swift; sourceTree = "<group>"; };
+		5295A4A01F97185000B31055 /* BlockNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNumber.swift; sourceTree = "<group>"; };
+		5295A4A11F97185000B31055 /* Gas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gas.swift; sourceTree = "<group>"; };
+		5295A4A21F97185000B31055 /* JSONDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDictionary.swift; sourceTree = "<group>"; };
+		5295A4A31F97185000B31055 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		5295A4A41F97185000B31055 /* Wei.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wei.swift; sourceTree = "<group>"; };
+		5295A4A61F97185000B31055 /* BigInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigInt.swift; sourceTree = "<group>"; };
+		5295A4A71F97185000B31055 /* GethAddresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethAddresses.swift; sourceTree = "<group>"; };
+		5295A4A81F97185000B31055 /* GethBigInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethBigInt.swift; sourceTree = "<group>"; };
+		5295A4A91F97185000B31055 /* GethHashes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethHashes.swift; sourceTree = "<group>"; };
+		5295A4AA1F97185000B31055 /* GethHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethHeaders.swift; sourceTree = "<group>"; };
+		5295A4AB1F97185000B31055 /* GethLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethLogs.swift; sourceTree = "<group>"; };
+		5295A4AC1F97185000B31055 /* GethPeerInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethPeerInfos.swift; sourceTree = "<group>"; };
+		5295A4AD1F97185000B31055 /* GethStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethStrings.swift; sourceTree = "<group>"; };
+		5295A4AE1F97185000B31055 /* GethTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethTopics.swift; sourceTree = "<group>"; };
+		5295A4AF1F97185000B31055 /* GethTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethTransactions.swift; sourceTree = "<group>"; };
+		5295A4B01F97185000B31055 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5295A4B11F97185000B31055 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		5295A4DB1F9721D200B31055 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		607FACD01AFB9204008FA782 /* Swifthereum_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swifthereum_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		607FACE51AFB9204008FA782 /* Swifthereum_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Swifthereum_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		755BB892D04ECB6741FEED1F /* Pods-Swifthereum_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifthereum_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifthereum_Tests/Pods-Swifthereum_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7668CED04B22255B9DFC417B /* Pods-Swifthereum_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifthereum_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifthereum_Tests/Pods-Swifthereum_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B200BA5C6C29CABC469611CF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B2A2D365EF946BED3DC9B056 /* Swifthereum.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Swifthereum.podspec; path = ../Swifthereum.podspec; sourceTree = "<group>"; };
+		B9C7C72026F20B9F276340F5 /* Pods_Swifthereum_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifthereum_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8D57DDA105066A53577658E /* Pods-Swifthereum_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifthereum_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D16571F72C864EF75D83D6BA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D9AE6244049127794044053D /* Pods_Swifthereum_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifthereum_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		607FACCD1AFB9204008FA782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D8CCDE104357E643D978F24 /* Pods_Swifthereum_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		607FACE21AFB9204008FA782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				129C5F4B037E115AE5D69A15 /* Pods_Swifthereum_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5295A4851F97182200B31055 /* Geth */ = {
+			isa = PBXGroup;
+			children = (
+				5295A4A51F97185000B31055 /* Extensions */,
+				5295A4861F97185000B31055 /* Geth */,
+				5295A49F1F97185000B31055 /* Typealias */,
+			);
+			name = Geth;
+			sourceTree = "<group>";
+		};
+		5295A4861F97185000B31055 /* Geth */ = {
+			isa = PBXGroup;
+			children = (
+				5295A4871F97185000B31055 /* Account.swift */,
+				5295A4881F97185000B31055 /* Address.swift */,
+				5295A4891F97185000B31055 /* Block.swift */,
+				5295A48A1F97185000B31055 /* Bloom.swift */,
+				5295A48B1F97185000B31055 /* ChainID.swift */,
+				5295A48C1F97185000B31055 /* Context.swift */,
+				5295A48D1F97185000B31055 /* ERC20Token.swift */,
+				5295A48E1F97185000B31055 /* Error.swift */,
+				5295A48F1F97185000B31055 /* EthereumClient.swift */,
+				5295A4901F97185000B31055 /* FilterQuery.swift */,
+				5295A4911F97185000B31055 /* Geth.swift */,
+				5295A4921F97185000B31055 /* Hash.swift */,
+				5295A4931F97185000B31055 /* Header.swift */,
+				5295A4941F97185000B31055 /* KeyStore.swift */,
+				5295A4951F97185000B31055 /* Log.swift */,
+				5295A4961F97185000B31055 /* Message.swift */,
+				5295A4971F97185000B31055 /* Node.swift */,
+				5295A4981F97185000B31055 /* NodeConfig.swift */,
+				5295A4991F97185000B31055 /* NodeInfo.swift */,
+				5295A49A1F97185000B31055 /* Nonce.swift */,
+				5295A49B1F97185000B31055 /* PeerInfo.swift */,
+				5295A49C1F97185000B31055 /* SyncProgress.swift */,
+				5295A49D1F97185000B31055 /* Transaction.swift */,
+				5295A49E1F97185000B31055 /* TransactOptions.swift */,
+			);
+			name = Geth;
+			path = ../../Swifthereum/Classes/Geth;
+			sourceTree = "<group>";
+		};
+		5295A49F1F97185000B31055 /* Typealias */ = {
+			isa = PBXGroup;
+			children = (
+				5295A4A01F97185000B31055 /* BlockNumber.swift */,
+				5295A4A11F97185000B31055 /* Gas.swift */,
+				5295A4A21F97185000B31055 /* JSONDictionary.swift */,
+				5295A4A31F97185000B31055 /* Topic.swift */,
+				5295A4A41F97185000B31055 /* Wei.swift */,
+			);
+			name = Typealias;
+			path = ../../Swifthereum/Classes/Typealias;
+			sourceTree = "<group>";
+		};
+		5295A4A51F97185000B31055 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5295A4A61F97185000B31055 /* BigInt.swift */,
+				5295A4A71F97185000B31055 /* GethAddresses.swift */,
+				5295A4A81F97185000B31055 /* GethBigInt.swift */,
+				5295A4A91F97185000B31055 /* GethHashes.swift */,
+				5295A4AA1F97185000B31055 /* GethHeaders.swift */,
+				5295A4AB1F97185000B31055 /* GethLogs.swift */,
+				5295A4AC1F97185000B31055 /* GethPeerInfos.swift */,
+				5295A4AD1F97185000B31055 /* GethStrings.swift */,
+				5295A4AE1F97185000B31055 /* GethTopics.swift */,
+				5295A4AF1F97185000B31055 /* GethTransactions.swift */,
+				5295A4B01F97185000B31055 /* String.swift */,
+				5295A4B11F97185000B31055 /* TimeInterval.swift */,
+			);
+			name = Extensions;
+			path = ../../Swifthereum/Classes/Extensions;
+			sourceTree = "<group>";
+		};
+		607FACC71AFB9204008FA782 = {
+			isa = PBXGroup;
+			children = (
+				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				607FACD21AFB9204008FA782 /* iOS Example for Swifthereum */,
+				607FACE81AFB9204008FA782 /* Tests */,
+				607FACD11AFB9204008FA782 /* Products */,
+				EB686648355EEC358123DFAC /* Pods */,
+				EA39D23F0E7B42BB6B4DFE2D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		607FACD11AFB9204008FA782 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD01AFB9204008FA782 /* Swifthereum_Example.app */,
+				607FACE51AFB9204008FA782 /* Swifthereum_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		607FACD21AFB9204008FA782 /* iOS Example for Swifthereum */ = {
+			isa = PBXGroup;
+			children = (
+				5295A4851F97182200B31055 /* Geth */,
+				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				5295A4DB1F9721D200B31055 /* QRScannerViewController.swift */,
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				607FACD31AFB9204008FA782 /* Supporting Files */,
+			);
+			name = "iOS Example for Swifthereum";
+			path = Swifthereum;
+			sourceTree = "<group>";
+		};
+		607FACD31AFB9204008FA782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD41AFB9204008FA782 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		607FACE81AFB9204008FA782 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		607FACE91AFB9204008FA782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				607FACEA1AFB9204008FA782 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				B2A2D365EF946BED3DC9B056 /* Swifthereum.podspec */,
+				B200BA5C6C29CABC469611CF /* README.md */,
+				D16571F72C864EF75D83D6BA /* LICENSE */,
+			);
+			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		EA39D23F0E7B42BB6B4DFE2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9C7C72026F20B9F276340F5 /* Pods_Swifthereum_Example.framework */,
+				D9AE6244049127794044053D /* Pods_Swifthereum_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB686648355EEC358123DFAC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E656FA4073022E31C86F318 /* Pods-Swifthereum_Example.debug.xcconfig */,
+				C8D57DDA105066A53577658E /* Pods-Swifthereum_Example.release.xcconfig */,
+				755BB892D04ECB6741FEED1F /* Pods-Swifthereum_Tests.debug.xcconfig */,
+				7668CED04B22255B9DFC417B /* Pods-Swifthereum_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		607FACCF1AFB9204008FA782 /* Swifthereum_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Swifthereum_Example" */;
+			buildPhases = (
+				C8AEC47C3726454D9CE838C8 /* [CP] Check Pods Manifest.lock */,
+				607FACCC1AFB9204008FA782 /* Sources */,
+				607FACCD1AFB9204008FA782 /* Frameworks */,
+				607FACCE1AFB9204008FA782 /* Resources */,
+				5D73C9FDAF7F8CE1EE329BE9 /* [CP] Embed Pods Frameworks */,
+				18EA14AFBE6AB1D62792E426 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swifthereum_Example;
+			productName = Swifthereum;
+			productReference = 607FACD01AFB9204008FA782 /* Swifthereum_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		607FACE41AFB9204008FA782 /* Swifthereum_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Swifthereum_Tests" */;
+			buildPhases = (
+				868CAB1C7AB99E9666EC72CE /* [CP] Check Pods Manifest.lock */,
+				607FACE11AFB9204008FA782 /* Sources */,
+				607FACE21AFB9204008FA782 /* Frameworks */,
+				607FACE31AFB9204008FA782 /* Resources */,
+				9D68A587E4CE8E6693BF13E9 /* [CP] Embed Pods Frameworks */,
+				C7BC39A66FE913E8235F7F20 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
+			);
+			name = Swifthereum_Tests;
+			productName = Tests;
+			productReference = 607FACE51AFB9204008FA782 /* Swifthereum_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		607FACC81AFB9204008FA782 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = CocoaPods;
+				TargetAttributes = {
+					607FACCF1AFB9204008FA782 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QS2K96ZEMY;
+						LastSwiftMigration = 0900;
+					};
+					607FACE41AFB9204008FA782 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QS2K96ZEMY;
+						LastSwiftMigration = 0900;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+				};
+			};
+			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Swifthereum" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 607FACC71AFB9204008FA782;
+			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				607FACCF1AFB9204008FA782 /* Swifthereum_Example */,
+				607FACE41AFB9204008FA782 /* Swifthereum_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		607FACCE1AFB9204008FA782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		607FACE31AFB9204008FA782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18EA14AFBE6AB1D62792E426 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D73C9FDAF7F8CE1EE329BE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifthereum_Example/Pods-Swifthereum_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		868CAB1C7AB99E9666EC72CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swifthereum_Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D68A587E4CE8E6693BF13E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifthereum_Tests/Pods-Swifthereum_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7BC39A66FE913E8235F7F20 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifthereum_Tests/Pods-Swifthereum_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8AEC47C3726454D9CE838C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swifthereum_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		607FACCC1AFB9204008FA782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5295A4D01F97186000B31055 /* NodeInfo.swift in Sources */,
+				5295A4C71F97186000B31055 /* FilterQuery.swift in Sources */,
+				5295A4B61F97185B00B31055 /* GethHeaders.swift in Sources */,
+				5295A4BC1F97185B00B31055 /* String.swift in Sources */,
+				5295A4B31F97185B00B31055 /* GethAddresses.swift in Sources */,
+				5295A4D61F97186500B31055 /* BlockNumber.swift in Sources */,
+				5295A4BB1F97185B00B31055 /* GethTransactions.swift in Sources */,
+				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				5295A4D41F97186000B31055 /* Transaction.swift in Sources */,
+				5295A4BE1F97186000B31055 /* Account.swift in Sources */,
+				5295A4DA1F97186500B31055 /* Wei.swift in Sources */,
+				5295A4CF1F97186000B31055 /* NodeConfig.swift in Sources */,
+				5295A4DC1F9721D200B31055 /* QRScannerViewController.swift in Sources */,
+				5295A4D11F97186000B31055 /* Nonce.swift in Sources */,
+				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				5295A4D91F97186500B31055 /* Topic.swift in Sources */,
+				5295A4B91F97185B00B31055 /* GethStrings.swift in Sources */,
+				5295A4C91F97186000B31055 /* Hash.swift in Sources */,
+				5295A4D51F97186000B31055 /* TransactOptions.swift in Sources */,
+				5295A4CA1F97186000B31055 /* Header.swift in Sources */,
+				5295A4C41F97186000B31055 /* ERC20Token.swift in Sources */,
+				5295A4C81F97186000B31055 /* Geth.swift in Sources */,
+				5295A4BD1F97185B00B31055 /* TimeInterval.swift in Sources */,
+				5295A4B51F97185B00B31055 /* GethHashes.swift in Sources */,
+				5295A4C01F97186000B31055 /* Block.swift in Sources */,
+				5295A4B21F97185B00B31055 /* BigInt.swift in Sources */,
+				5295A4B81F97185B00B31055 /* GethPeerInfos.swift in Sources */,
+				5295A4D21F97186000B31055 /* PeerInfo.swift in Sources */,
+				5295A4C51F97186000B31055 /* Error.swift in Sources */,
+				5295A4D81F97186500B31055 /* JSONDictionary.swift in Sources */,
+				5295A4CB1F97186000B31055 /* KeyStore.swift in Sources */,
+				5295A4C31F97186000B31055 /* Context.swift in Sources */,
+				5295A4C61F97186000B31055 /* EthereumClient.swift in Sources */,
+				5295A4C11F97186000B31055 /* Bloom.swift in Sources */,
+				5295A4B71F97185B00B31055 /* GethLogs.swift in Sources */,
+				5295A4CE1F97186000B31055 /* Node.swift in Sources */,
+				5295A4BA1F97185B00B31055 /* GethTopics.swift in Sources */,
+				5295A4C21F97186000B31055 /* ChainID.swift in Sources */,
+				5295A4BF1F97186000B31055 /* Address.swift in Sources */,
+				5295A4CD1F97186000B31055 /* Message.swift in Sources */,
+				5295A4B41F97185B00B31055 /* GethBigInt.swift in Sources */,
+				5295A4CC1F97186000B31055 /* Log.swift in Sources */,
+				5295A4D31F97186000B31055 /* SyncProgress.swift in Sources */,
+				5295A4D71F97186500B31055 /* Gas.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		607FACE11AFB9204008FA782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* Swifthereum_Example */;
+			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				607FACDA1AFB9204008FA782 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				607FACDF1AFB9204008FA782 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		607FACED1AFB9204008FA782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		607FACEE1AFB9204008FA782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		607FACF01AFB9204008FA782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E656FA4073022E31C86F318 /* Pods-Swifthereum_Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QS2K96ZEMY;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Swifthereum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		607FACF11AFB9204008FA782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8D57DDA105066A53577658E /* Pods-Swifthereum_Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QS2K96ZEMY;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Swifthereum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		607FACF31AFB9204008FA782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 755BB892D04ECB6741FEED1F /* Pods-Swifthereum_Tests.debug.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = QS2K96ZEMY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		607FACF41AFB9204008FA782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7668CED04B22255B9DFC417B /* Pods-Swifthereum_Tests.release.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = QS2K96ZEMY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Swifthereum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607FACED1AFB9204008FA782 /* Debug */,
+				607FACEE1AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Swifthereum_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607FACF01AFB9204008FA782 /* Debug */,
+				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Swifthereum_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607FACF31AFB9204008FA782 /* Debug */,
+				607FACF41AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
+}

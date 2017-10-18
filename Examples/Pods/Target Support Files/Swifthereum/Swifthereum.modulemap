@@ -1,0 +1,6 @@
+framework module Swifthereum {
+  umbrella header "Swifthereum-umbrella.h"
+
+  export *
+  module * { export * }
+}
