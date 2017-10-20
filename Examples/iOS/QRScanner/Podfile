@@ -1,0 +1,9 @@
+platform :ios, '11.0'
+
+target 'QRScanner' do
+  use_frameworks!
+
+  # Pods for QRScanner
+  pod 'Geth', '~> 1.7.2'
+  pod 'BigInt', '~> 3.0'
+end

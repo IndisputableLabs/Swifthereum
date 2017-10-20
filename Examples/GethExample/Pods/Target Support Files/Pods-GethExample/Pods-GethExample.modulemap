@@ -1,6 +1,0 @@
-framework module Pods_GethExample {
-  umbrella header "Pods-GethExample-umbrella.h"
-
-  export *
-  module * { export * }
-}

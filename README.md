@@ -5,35 +5,61 @@
 [![License](https://img.shields.io/cocoapods/l/Swifthereum.svg?style=flat)](http://cocoapods.org/pods/Swifthereum)
 [![Platform](https://img.shields.io/cocoapods/p/Swifthereum.svg?style=flat)](http://cocoapods.org/pods/Swifthereum)
 
-Swifthereum is a native Swift iOS and MacOS library to use [Go Ethereum](https://github.com/ethereum/go-ethereum/) (Geth). Swifthereum wraps the Go interface into a Swift-friendly framework for easy and fast development of Swift-native dApps.
+Swifthereum is a native Swift framework that provides access to the [Go Ethereum](https://github.com/ethereum/go-ethereum/) framework in a Swift-friendly way. Swifthereum makes it easy and fast to develop native dApps on iOS and MacOS.
+
+## Versions
+
+Swifthereum supports the following Ethereum interfaces:
+
+- Web3 Interface
+
+	The default interface will either connect to a local Geth instance over HTTP or a service like [Infura](https://infura.io) over HTTPS.
+	
+- IPC
+
+	Not supported yet.
+	
+- Mobile Geth API (**Experimental**. iOS only)
+
+	Swifthereum wraps the Mobile Geth framework into a Swift friendly framework. Mobile Geth is only available for iOS, not for MacOS. Mobile Geth runs a Ethereum light node on the iOS device and will need to sync with the Ethereum network to work.
+	
+	Mobile Geth is highly experimental and the current version is not Swift friendly. It is not recommended to use the Geth API in products. Instead, use the Web3 interface.
+	
+
+## Common Features
 
 Swifthereum includes support for ERC-20 tokens and provides a download option to download a list of the latest tokens.
 
-## Example
+## Examples
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+iOS and Mac examples can be found in the [Examples directory](Examples/).
 
 ## Requirements
 
-- iOS 9 and later
+- iOS 9 and later (QRCodeScanner example requires iOS 11)
 - MacOS 10.10 and later (coming soon)
 - Swift 4.0 and later
 
-## Installation
+## Swifthereum Web3 Installation
 
-~~Swifthereum is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+The Swifthereum Web3 framework is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Swifthereum'
 ```
-~~
 
-**Update**: As Geth is currently a static framework, Cocoapods is unsupported. For now, please manually copy the files into your project. This issue is tracked as Geth issue [#15272](https://github.com/ethereum/go-ethereum/issues/15272).
+## Swifthereum Mobile Geth Installation
+
+The experimental Geth API framework does not support Cocoapods, as the current Geth framework is a static framework and therefore cannot be used as a Cocoapods dependency. To use the Geth API, add Geth to your podfile and then manually copy the Swifthereum Geth files to your project. This issue is tracked as Geth issue [#15272](https://github.com/ethereum/go-ethereum/issues/15272).
+
+```ruby
+pod 'Geth'
+```
 
 
 ## Usage
 
-### Basics
+### Basics (Depricated)
 
 Start an Ethereum node as part of the main network and synchronize with the Ethereum network:
 
@@ -88,7 +114,7 @@ ERC20Token.fetchTokens { tokens, error in
 }
 ````
 
-## Known Limitations
+## Known Limitations Mobile Geth API
 
 Swifthereum was developed as part of Indisputable Lab's entry for the Consensys BSIC hackathon. The current version is a pre-release and should not be used in production.
 

@@ -11,7 +11,7 @@ import Foundation
 
 extension URLRequest {
     
-    init<A>(resource: Resource<A>) {
+    public init?<A>(resource: Resource<A>) {
         
         /*
          Merge server and resource parameters.
@@ -37,17 +37,14 @@ extension URLRequest {
         case .body:
             body = parameters.bodyEncodedData
         }
-        
-        self.init(url: URL(string: endPoint)!)
-        
-        // Set body
+        guard let url = URL(string: endPoint) else { return  nil }
+        self.init(url: url)
+    
         httpBody = body
+        httpMethod = resource.httpMethod.rawValue
         
         // Set headers
         addValue(resource.encoding.contentType(), forHTTPHeaderField: "Content-Type")
         addValue(resource.encoding.contentType(), forHTTPHeaderField: "Accept")
-        
-        print(allHTTPHeaderFields ?? "")
-        print (self)
     }
 }

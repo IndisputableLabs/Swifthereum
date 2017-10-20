@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Swifthereum is a native Swift iOS and MacOS library to use Go Ethereum (Geth). Swifthereum wraps the Go interface into a Swift-friendly framework for easy and fast development of Swift-native dApps.
+Swifthereum is a native Swift iOS and MacOS library to use Go Ethereum (Geth). Swifthereum wraps the Go and Web3 interfaces into a Swift-friendly framework for easy and fast development of Swift-native dApps.
 
 Swifthereum includes support for ERC-20 tokens and provides a download option to download a list of the latest tokens.
                        DESC
@@ -31,10 +31,10 @@ Swifthereum includes support for ERC-20 tokens and provides a download option to
   s.social_media_url = 'https://twitter.com/ronaldmannak'
 
   s.ios.deployment_target = '9.0'
-  #spec.osx.deployment_target  = '10.10'
+  s.osx.deployment_target  = '10.10'
 
-  s.source_files = 'Swifthereum/Classes/**/*'
-  
+  s.ios.source_files = 'Swifthereum/Classes/Common/**/*', 'Swifthereum/Classes/Geth/**/*' 
+  s.osx.source_files = 'Swifthereum/Classes/Common/**/*', 'Swifthereum/Classes/Web3/**/*', 'Swifthereum/Classes/ipc/**/*'
   # s.resource_bundles = {
   #   'Swifthereum' => ['Swifthereum/Assets/*.png']
   # }
@@ -42,5 +42,5 @@ Swifthereum includes support for ERC-20 tokens and provides a download option to
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'BigInt', '~> 3.0.0'
-  s.dependency 'Geth', '~> 1.7.1'
+  s.ios.dependency 'Geth', '~> 1.7.1'
 end

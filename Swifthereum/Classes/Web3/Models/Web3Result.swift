@@ -1,5 +1,5 @@
 //
-//  Provider.swift
+//  Version.swift
 //  GethTest
 //
 //  Created by Ronald Mannak on 7/24/17.
@@ -9,13 +9,9 @@
 import Foundation
 
 /**
+ Generic result
  */
-public enum Provider {
-    
-    ///
-    case web3(server: Server)
-    
-    ///
-    case ipc(fileURL: URL)
+public struct Web3Result: Decodable {
+    public let result: String
 }
 
