@@ -9,7 +9,11 @@
 import Cocoa
 import Swifthereum
 
-// geth --rpc 
+// geth --rpc
+// testrpc
+// infura
+
+
 class ViewController: NSViewController {
     
     let swifthereum = Swifthereum(provider: .web3(server: Server()))
