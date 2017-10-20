@@ -21,12 +21,15 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkTest()
+        getBalance()
+//        testMethods()
+        
+//        networkTest()
         // Do any additional setup after loading the view.
         
 //        let hash = Hash()
 //
-//        guard let address = Address(hex: "0x3914bff975ef35e8d3403e1ea953bf886b0e8fea") else {
+//        guard let address = AddressHash(hex: "0x3914bff975ef35e8d3403e1ea953bf886b0e8fea") else {
 //            print("nil")
 //            return
 //        }
@@ -37,10 +40,25 @@ class ViewController: NSViewController {
     }
     
 
+    func testMethods() {
+        let method = Method.balance("0x3914bff975ef35e8d3403e1ea953bf886b0e8fea", .latest)
+        let resource = Resource<Web3Result>(server: Server(), method: method)
+        NetworkService().load(resource: resource, debug: false) { result in
+            print("result: \(result)")
+        }
+    }
+    
+    func getBalance() {
+        let address: AddressHash = AddressHash(address:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
+        print(address)
+        address.balance(swifthereum: swifthereum) { result in
+            print(result)
+        }
+    }
     //web3_clientVersion
     func networkTest() {
         let server = Server()
-        let resource = Resource<Web3Result>(server: server, rpcMethod: "web3_clientVersion", headers: nil, parameters: nil, httpMethod: .post, encoding: .json)
+        let resource = Resource<Web3Result>(server: server, method: "web3_clientVersion", parameters: nil, headers: nil, httpMethod: .post, encoding: .json)
         NetworkService().load(resource: resource, debug: true) { result in
             print("load ended with result: \(result)")
         }

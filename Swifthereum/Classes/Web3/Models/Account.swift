@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+public struct Account {
+    public let address: AddressHash
+    public let url: URL
+}

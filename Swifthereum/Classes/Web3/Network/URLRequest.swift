@@ -21,10 +21,14 @@ extension URLRequest {
         var endPoint = resource.server.domain
         let parameters: JSONDictionary = {
             // Merges the server's default parameters with the method parameter and the resource specific parameters
-            let methodParameter: JSONDictionary = ["method" : resource.rpcMethod]
+            let methodParameter: JSONDictionary = ["method" : resource.method]
             var serverParameters: JSONDictionary = resource.server.defaultParameters
             serverParameters = serverParameters.merge(with: methodParameter)
-            return serverParameters.merge(with: resource.parameters)
+            if let parameters = resource.parameters {
+                let messageParameters: JSONDictionary = ["params" : parameters]
+                serverParameters.merge(with: messageParameters)
+            }
+            return serverParameters
         }()
         var body: Data? = nil
         switch resource.encoding {

@@ -8,10 +8,33 @@
 
 import Foundation
 
+/*
+ Extension for Hashes
+ */
 extension String {
-
-    /// Returns true if self is a valid hex string. Will ignore 0x prefix if present.
-    public func isValidHex() -> Bool {
+    
+    /**
+     */
+    public init?(hex: String, length: Int? = nil) {
+        var hex = hex
+        // Remove ethereum: prefix if present
+        if hex.hasPrefix("ethereum:"), let index = hex.range(of: "ethereum:")?.upperBound {
+            hex = String(hex[index...])
+        }
+        if hex.has0xPrefix() == false {
+            hex = "0x" + hex
+        }
+        self.init(hex)
+        // Check if
+        if isValidHex(length: length) == false { return nil }
+    }
+    
+    
+    /**
+     Returns true if self is a valid hex string. Will ignore 0x prefix if present.
+     - Parameter length: Expected length of the hex string excluding 0x prefix
+     */
+    public func isValidHex(length: Int? = nil) -> Bool {
         var string = self
         if has0xPrefix() == true {
             string = String(string.dropFirst(2))
@@ -20,6 +43,7 @@ extension String {
         guard string.uppercased().rangeOfCharacter(from: chars) == nil else {
             return false
         }
+        if let length = length, string.count != length { return false}
         return true
     }
     

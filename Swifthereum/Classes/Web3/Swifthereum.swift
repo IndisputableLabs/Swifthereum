@@ -17,6 +17,9 @@ public class Swifthereum {
         self.provider = provider
     }
     
+    
+    
+    
 //    public func fetch<A>(endpoint: Web3Endpoint, data: Data, completion: (A?, Error?)) {
 //        
 //    }
