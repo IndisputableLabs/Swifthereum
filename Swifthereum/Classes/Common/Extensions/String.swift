@@ -16,17 +16,24 @@ extension String {
     /**
      */
     public init?(hex: String, length: Int? = nil) {
+        
         var hex = hex
-        // Remove ethereum: prefix if present
-        if hex.hasPrefix("ethereum:"), let index = hex.range(of: "ethereum:")?.upperBound {
-            hex = String(hex[index...])
+        
+        // Remove ethereum: prefix used in QR codes if present.
+        let ethereumPrefix = "ethereum:"
+        if hex.hasPrefix(ethereumPrefix) {
+            hex = String(hex.dropFirst(ethereumPrefix.count))
         }
-        if hex.has0xPrefix() == false {
-            hex = "0x" + hex
+        
+        // Remove 0x prefix if present.
+        if hex.has0xPrefix() {
+            hex = String(hex.dropFirst(2))
         }
+        
+        // Check if length of hex string is correct.
+        if hex.isValidHex(length: length) == false { return nil }
+        
         self.init(hex)
-        // Check if
-        if isValidHex(length: length) == false { return nil }
     }
     
     
@@ -43,7 +50,7 @@ extension String {
         guard string.uppercased().rangeOfCharacter(from: chars) == nil else {
             return false
         }
-        if let length = length, string.count != length { return false}
+        if let length = length, string.count != length { return false }
         return true
     }
     
@@ -52,6 +59,13 @@ extension String {
         return hasPrefix("0x") || hasPrefix("0X")
     }
     
+    public func remove0xPrefix() -> String {
+        var hex = self
+        if has0xPrefix() {
+            hex = String(hex.dropFirst(2))
+        }
+        return hex
+    }
     
     /**
      Show hexadecimal representation of self

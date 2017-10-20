@@ -77,11 +77,11 @@ public enum Method {
         case .sha3(let string):
             return [string]
         case .balance(let address, let defaultBlock):
-            return [address.hash, defaultBlock.value]
+            return [address.description, defaultBlock.value]
         case .storage(let address, let defaultBlock):
-            return [address.hash, defaultBlock.value]
+            return [address.description, defaultBlock.value]
         case .transactionCount(let address, let defaultBlock):
-            return [address.hash, defaultBlock.value]
+            return [address.description, defaultBlock.value]
         case .sendTransaction(let transaction):
             let encoder = JSONEncoder()
             return try? encoder.encode(transaction)

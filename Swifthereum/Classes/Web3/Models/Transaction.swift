@@ -22,7 +22,7 @@ public struct Transaction: Codable {
     public let to: Address
     public let gas: Wei
     public let gasPrice: Wei
-    public let value: Hash
+    public let value: HashString
     public let data: Data
 }
 
