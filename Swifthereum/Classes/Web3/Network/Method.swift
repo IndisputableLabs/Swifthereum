@@ -8,7 +8,6 @@
 import Foundation
 
 /**
- 
  https://github.com/ethereum/wiki/wiki/JSON-RPC
  */
 public enum Method {
@@ -31,9 +30,9 @@ public enum Method {
     case gasPrice
     case accounts
     case blockNumber
-    case balance(AddressHash, DefaultBlock)
-    case storage(AddressHash, DefaultBlock)
-    case transactionCount(AddressHash, DefaultBlock)
+    case balance(Address, DefaultBlock)
+    case storage(Address, DefaultBlock)
+    case transactionCount(Address, DefaultBlock)
     
     /*eth_getBlockTransactionCountByHash
     eth_getBlockTransactionCountByNumber
@@ -78,11 +77,11 @@ public enum Method {
         case .sha3(let string):
             return [string]
         case .balance(let address, let defaultBlock):
-            return [address, defaultBlock.value]
+            return [address.hash, defaultBlock.value]
         case .storage(let address, let defaultBlock):
-            return [address, defaultBlock.value]
+            return [address.hash, defaultBlock.value]
         case .transactionCount(let address, let defaultBlock):
-            return [address, defaultBlock.value]
+            return [address.hash, defaultBlock.value]
         case .sendTransaction(let transaction):
             let encoder = JSONEncoder()
             return try? encoder.encode(transaction)

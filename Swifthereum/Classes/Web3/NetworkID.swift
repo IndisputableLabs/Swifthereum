@@ -33,7 +33,6 @@ public enum NetworkID  {
     }
     
     init(networkID: BigInt) {
-        
         switch networkID {
         case 0:                 self = .olympic
         case 1:                 self = .main
@@ -42,6 +41,20 @@ public enum NetworkID  {
         case 4:                 self = .rinkeby
         case 42:                self = .kovan
         default:                self = .custom(networkID)
+        }
+    }
+}
+
+extension NetworkID: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .olympic:          return "Olympic"
+        case .main:             return "Main"
+        case .morden:           return "Morden"
+        case .ropsten:          return "Ropsten"
+        case .rinkeby:          return "Rinkeby"
+        case .kovan:            return "Kovan"
+        case .custom(let id):   return "\(id)"
         }
     }
 }

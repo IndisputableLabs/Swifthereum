@@ -18,8 +18,8 @@ import Foundation
  }]
  */
 public struct Transaction: Codable {
-    public let from: AddressHash
-    public let to: AddressHash
+    public let from: Address
+    public let to: Address
     public let gas: Wei
     public let gasPrice: Wei
     public let value: Hash

@@ -41,7 +41,8 @@ class ViewController: NSViewController {
     
 
     func testMethods() {
-        let method = Method.balance("0x3914bff975ef35e8d3403e1ea953bf886b0e8fea", .latest)
+        guard let address = Address(hash: "0x3914bff975ef35e8d3403e1ea953bf886b0e8fea") else { fatalError() }
+        let method = Method.balance(address, .latest)
         let resource = Resource<Web3Result>(server: Server(), method: method)
         NetworkService().load(resource: resource, debug: false) { result in
             print("result: \(result)")
@@ -49,7 +50,7 @@ class ViewController: NSViewController {
     }
     
     func getBalance() {
-        let address: AddressHash = AddressHash(address:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
+        let address: Address = Address(hash:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
         print(address)
         address.balance(swifthereum: swifthereum) { result in
             print(result)
