@@ -16,46 +16,32 @@ import Swifthereum
 
 class ViewController: NSViewController {
     
+//    let swifthereum = Swifthereum(provider: .web3(server: Server(domain: "https://mainnet.infura.io/mwHd0j5tlQUZ9zx3Lkv5")))
     let swifthereum = Swifthereum(provider: .web3(server: Server()))
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getBalance()
-//        testMethods()
-        
-//        networkTest()
-        // Do any additional setup after loading the view.
-        
-//        let hash = Hash()
-//
-//        guard let address = AddressHash(hex: "0x3914bff975ef35e8d3403e1ea953bf886b0e8fea") else {
-//            print("nil")
-//            return
-//        }
-//        print (address)
-        
-        
-        // https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
-    }
-    
-
-    func testMethods() {
-        guard let address = Address(hex: "0x3914bff975ef35e8d3403e1ea953bf886b0e8fea") else { fatalError() }
-        let method = Method.balance(address, .latest)
-        let resource = Resource<Web3Result>(server: Server(), method: method)
-        NetworkService().load(resource: resource, debug: false) { result in
-            print("result: \(result)")
-        }
+//        getBalance()
+        getTransaction()
     }
     
     func getBalance() {
-        let address: Address = Address(hex:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
+        let address = Address(hex:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
         print(address)
         address.balance(swifthereum: swifthereum) { result in
             print(result)
         }
     }
+    
+    func getTransaction() {
+        print("length: \("0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b".count) 32+2?")
+        let transaction = TransactionHash(hex: "0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b")!
+        transaction.transaction(swifthereum: swifthereum) { result in
+            print(result)
+        }
+    }
+    
     //web3_clientVersion
     func networkTest() {
         let server = Server()

@@ -26,7 +26,7 @@ extension URLRequest {
             serverParameters = serverParameters.merge(with: methodParameter)
             if let parameters = resource.parameters {
                 let messageParameters: JSONDictionary = ["params" : parameters]
-                serverParameters.merge(with: messageParameters)
+                serverParameters = serverParameters.merge(with: messageParameters)
             }
             return serverParameters
         }()

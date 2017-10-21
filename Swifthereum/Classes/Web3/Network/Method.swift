@@ -33,7 +33,6 @@ public enum Method {
     case balance(Address, DefaultBlock)
     case storage(Address, DefaultBlock)
     case transactionCount(Address, DefaultBlock)
-    
     /*eth_getBlockTransactionCountByHash
     eth_getBlockTransactionCountByNumber
     eth_getUncleCountByBlockHash
@@ -41,8 +40,14 @@ public enum Method {
     eth_getCode
     eth_sign */
     case sendTransaction(Transaction)
-
-    
+    case sendRawTransaction
+    case call
+    case estimateGas
+    case blockByHash
+    case blockByNumber
+    case transactionByHash(TransactionHash)
+    case transactionByBlockHashAndIndex
+    case transactionByBlockNumberAndIndex
  
     public var method: String {
         switch self {
@@ -69,6 +74,14 @@ public enum Method {
         eth_getCode
         eth_sign */
         case .sendTransaction:  return "eth_sendTransaction"
+        case .sendRawTransaction:   return "eth_sendRawTransaction"
+        case .call:             return "eth_call"
+        case .estimateGas:      return "eth_estimateGas"
+        case .blockByHash:      return "eth_getBlockByHash"
+        case .blockByNumber:    return "eth_getBlockByNumber"
+        case .transactionByHash:    return "eth_getTransactionByHash"
+        case .transactionByBlockHashAndIndex:   return "eth_getTransactionByBlockHashAndIndex"
+        case .transactionByBlockNumberAndIndex: return "eth_getTransactionByBlockNumberAndIndex"
         }
     }
     
@@ -77,30 +90,24 @@ public enum Method {
         case .sha3(let string):
             return [string]
         case .balance(let address, let defaultBlock):
-            return [address.description, defaultBlock.value]
+            return [String(describing: address), defaultBlock.value]
         case .storage(let address, let defaultBlock):
-            return [address.description, defaultBlock.value]
+            return [String(describing: address), defaultBlock.value]
         case .transactionCount(let address, let defaultBlock):
-            return [address.description, defaultBlock.value]
+            return [String(describing: address), defaultBlock.value]
         case .sendTransaction(let transaction):
             let encoder = JSONEncoder()
             return try? encoder.encode(transaction)
+        case .transactionByHash(let hash):
+            return [String(describing: hash)]
         default:
             return nil
         }
-        
     }
     
 /*
 
-eth_sendRawTransaction
-eth_call
-eth_estimateGas
-eth_getBlockByHash
-eth_getBlockByNumber
-eth_getTransactionByHash
-eth_getTransactionByBlockHashAndIndex
-eth_getTransactionByBlockNumberAndIndex
+
 eth_getTransactionReceipt
 eth_getUncleByBlockHashAndIndex
 eth_getUncleByBlockNumberAndIndex

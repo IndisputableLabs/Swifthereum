@@ -25,17 +25,8 @@ extension Address {
      */
     public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Web3Result>) -> ()) {
         let method = Method.balance(self, defaultBlock)
-        let resource = Resource<Web3Result>(server: Server(), method: method)
-        NetworkService().load(resource: resource, debug: true) { result in
+        swifthereum.fetch(method: method) { (result: Result<Web3Result>) in
             completion(result)
         }
     }
 }
-
-// TODO:
-// Do we need the Swifthereum and Provider classes? or can we just pass a Server to all methods?
-// Do we need a generic fetch method in Swifthereum?
-// Can the Method enum return the correct Resource<ResultType> type?
-// What if we make this a Hash class with Address and other hashes like TransactionHash and privateKeyHash as subclasses? Only difference is the length of the hash
-// Or a Hash protocol with default n swift the protocol can be generic if you will use associatedtype.
-

@@ -17,14 +17,19 @@ public class Swifthereum {
         self.provider = provider
     }
     
-    
-    
-    
-//    public func fetch<A>(endpoint: Web3Endpoint, data: Data, completion: (A?, Error?)) {
-//        
-//    }
-    
-//    public func fetch(
-    
-    
+    public func fetch<A: Decodable>(method: Method, completion: @escaping (Result<A>) -> ()) {
+        switch provider {
+        case .web3(let server):
+            let resource = Resource<A>(server: server, method: method)
+            NetworkService().load(resource: resource, debug: true) { result in
+//            let resource = Resource<Web3Result>(server: server, method: method)
+//            NetworkService().load(resource: resource, debug: true) { (result: Result<Web3Result>) in
+                
+                // Convert result?
+                completion(result)
+            }
+        default:
+            fatalError("Only web3 is currentl supported")
+        }
+    }    
 }

@@ -26,7 +26,10 @@ open class NetworkService: NSObject, URLSessionDelegate {
     open func load<A>(resource: Resource<A>, debug: Bool = false, completion: @escaping (Result<A>) -> ()) {
         
 //        NetworkService.syncQueue.sync {        
-        let request = URLRequest(resource: resource)!
+        guard let request = URLRequest(resource: resource) else {
+            completion(Result.error(SwifthereumError.invalidResource))
+            return            
+        }
         let session = URLSession(configuration: URLSessionConfiguration.default) //, delegate: nil, delegateQueue: nil)
         session.dataTask(with: request) {data, response, error in
             print("finished loading")

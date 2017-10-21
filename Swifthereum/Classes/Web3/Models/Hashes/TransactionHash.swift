@@ -14,7 +14,7 @@ import BigInt
 public struct TransactionHash: Hash {
     public let hash: HashString
     
-    public static var hashLength: Int = 32
+    public static var hashLength: Int = 64
     
     public init?(hex: HashString) {
         guard let hash = String(hex: hex, length: type(of: self).hashLength) else { return nil }
@@ -22,3 +22,11 @@ public struct TransactionHash: Hash {
     }
 }
 
+extension TransactionHash {
+    public func transaction(swifthereum: Swifthereum, completion: @escaping (Result<Web3Result>) -> ()) {
+        let method = Method.transactionByHash(self)
+        swifthereum.fetch(method: method) { (result: Result<Web3Result>) in
+            completion(result)
+        }
+    }
+}

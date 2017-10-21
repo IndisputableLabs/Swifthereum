@@ -23,7 +23,7 @@ public struct Transaction: Codable {
     public let gas: Wei
     public let gasPrice: Wei
     public let value: HashString
-    public let data: Data
+    public let data: String
 }
 
 //extension Transaction: Codable {
