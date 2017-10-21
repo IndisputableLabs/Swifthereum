@@ -19,13 +19,27 @@ public struct Address: Hash {
     }
 }
 
+// Codable
+extension Address {
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let stringValue = try container.decode(String.self)
+        guard let hash = String(hex: stringValue, length: type(of: self).hashLength) else {
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "\(stringValue) is not a valid address")
+        }
+        self.hash = hash
+    }
+}
+
 extension Address {
     /**
      Returns the balance of the account of given address.
      */
-    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Web3Result>) -> ()) {
+    // TODO: Change back to BigInt. Issue is that result is hex ("0x317604574664c00")
+    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
         let method = Method.balance(self, defaultBlock)
-        swifthereum.fetch(method: method) { (result: Result<Web3Result>) in
+        swifthereum.fetch(method: method) { (result: Result<String>) in
             completion(result)
         }
     }

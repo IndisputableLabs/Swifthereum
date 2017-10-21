@@ -32,7 +32,6 @@ open class NetworkService: NSObject, URLSessionDelegate {
         }
         let session = URLSession(configuration: URLSessionConfiguration.default) //, delegate: nil, delegateQueue: nil)
         session.dataTask(with: request) {data, response, error in
-            print("finished loading")
             if debug == true { self.debugPrint(data: data, response: response, error: error) }
 
             guard error == nil else {

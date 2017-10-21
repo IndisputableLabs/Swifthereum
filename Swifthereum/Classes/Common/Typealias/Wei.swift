@@ -9,45 +9,6 @@
 import Foundation
 import BigInt
 
-/*
-public typealias Ethereum = Measurement<UnitEthereum>
-
-open class UnitEthereum: Dimension {
-
-    static open var wei: UnitEthereum { return UnitEthereum(symbol: "Wei", converter: UnitConverterLinear(coefficient: 1)) }
-    
-    static open var kwei: UnitEthereum { return UnitEthereum(symbol: "Kwei", converter: UnitConverterLinear(coefficient: 0.001)) }
-    static open var ada: UnitEthereum { return UnitEthereum(symbol: "Ada", converter: UnitConverterLinear(coefficient: 0.001)) }
-    static open var femtoEther: UnitEthereum { return UnitEthereum(symbol: "Femto", converter: UnitConverterLinear(coefficient: 0.001)) }
-
-    static open var gwei: UnitEthereum { return UnitEthereum(symbol: "Gwei", converter: UnitConverterLinear(coefficient: 0.000_000_001)) }
-    static open var shannon: UnitEthereum { return UnitEthereum(symbol: "Shannon", converter: UnitConverterLinear(coefficient: 0.000_000_001)) }
-    static open var nanoether: UnitEthereum { return UnitEthereum(symbol: "Nanoether", converter: UnitConverterLinear(coefficient: 0.000_000_001)) }
-    static open var nano: UnitEthereum { return UnitEthereum(symbol: "Nano", converter: UnitConverterLinear(coefficient: 0.000_000_001)) }
-    
-    static open var Szabo: UnitEthereum { return UnitEthereum(symbol: "Szabo", converter: UnitConverterLinear(coefficient: 0.000_000_000_001)) }
-    static open var microether: UnitEthereum { return UnitEthereum(symbol: "Microether", converter: UnitConverterLinear(coefficient: 0.000_000_000_001)) }
-    static open var micro: UnitEthereum { return UnitEthereum(symbol: "Micro", converter: UnitConverterLinear(coefficient: 0.000_000_000_001)) }
-    
-    static open var finney: UnitEthereum { return UnitEthereum(symbol: "Finney", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_001)) }
-    static open var milliether: UnitEthereum { return UnitEthereum(symbol: "Milliether", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_001)) }
-    static open var milli: UnitEthereum { return UnitEthereum(symbol: "Milli", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_001)) }
-    
-    static open var ether: UnitEthereum { return UnitEthereum(symbol: "Ether", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_001)) }
-    
-    static open var kether: UnitEthereum { return UnitEthereum(symbol: "Kether", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_000_001)) }
-    static open var grand: UnitEthereum { return UnitEthereum(symbol: "Grand", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_000_001)) }
-    static open var einstein: UnitEthereum { return UnitEthereum(symbol: "Einstein", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_000_001)) }
-
-    static open var mether: UnitEthereum { return UnitEthereum(symbol: "Mether", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_000_000_001)) }
-    
-    static open var gether: UnitEthereum { return UnitEthereum(symbol: "Gether", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_000_000_000_001)) }
-    
-    static open var tether: UnitEthereum { return UnitEthereum(symbol: "Tether", converter: UnitConverterLinear(coefficient: 0.000_000_000_000_000_000_000_000_000_001)) }
-    
-    open override static func baseUnit() -> UnitEthereum {  return .wei }
-} */
-
 public typealias Wei = BigInt
 
 public enum EthereumUnit {
@@ -69,7 +30,6 @@ public enum EthereumUnit {
         }
     }
     
-    // TODO: I'd like to add _ in the factors, like 1_000_000_000
     public var factor: BigInt {
         switch self {
         case .wei: return BigInt(1)
@@ -102,6 +62,27 @@ public enum EthereumUnit {
 }
 
 public extension Wei {
+    
+//    init(hex: String) {
+//        
+//    }
+//    
+//    public init(from decoder: Decoder) throws {
+////        var products = [Product]()
+////        let container = try decoder.container(keyedBy: ProductKey.self)
+////        for key in container.allKeys {
+////            // Note how the `key` in the loop above is used immediately to access a nested container.
+////            let productContainer = try container.nestedContainer(keyedBy: ProductKey.self, forKey: key)
+////            let points = try productContainer.decode(Int.self, forKey: .points)
+////            let description = try productContainer.decodeIfPresent(String.self, forKey: .description)
+////            
+////            // The key is used again here and completes the collapse of the nesting that existed in the JSON representation.
+////            let product = Product(name: key.stringValue, points: points, description: description)
+////            products.append(product)
+////        }
+////        
+////        self.init(products: products)
+//    }
     
     /**
      

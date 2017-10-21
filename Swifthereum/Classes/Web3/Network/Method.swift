@@ -14,7 +14,7 @@ public enum Method {
     
     // Web3
     case clientVersion
-    case sha3(String)
+    case sha3(String) // TODO: Change to variable length Hash
     
     // Net
     case version
@@ -39,7 +39,7 @@ public enum Method {
     eth_getUncleCountByBlockNumber
     eth_getCode
     eth_sign */
-    case sendTransaction(Transaction)
+    case sendTransaction(NewTransaction)
     case sendRawTransaction
     case call
     case estimateGas
@@ -85,7 +85,7 @@ public enum Method {
         }
     }
     
-    public var parameters: Any? {
+    public var parameters: Decodable? {
         switch self {
         case .sha3(let string):
             return [string]

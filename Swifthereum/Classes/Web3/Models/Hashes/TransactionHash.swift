@@ -23,9 +23,9 @@ public struct TransactionHash: Hash {
 }
 
 extension TransactionHash {
-    public func transaction(swifthereum: Swifthereum, completion: @escaping (Result<Web3Result>) -> ()) {
+    public func transaction(swifthereum: Swifthereum, completion: @escaping (Result<Transaction>) -> ()) {
         let method = Method.transactionByHash(self)
-        swifthereum.fetch(method: method) { (result: Result<Web3Result>) in
+        swifthereum.fetch(method: method) { (result: Result<Transaction>) in
             completion(result)
         }
     }
