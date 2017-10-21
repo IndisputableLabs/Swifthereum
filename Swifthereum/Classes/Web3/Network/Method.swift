@@ -17,15 +17,15 @@ public enum Method {
     case sha3(String) // TODO: Change to variable length Hash
     
     // Net
-    case version
+    case networkID
     case peerCount
     case listening
     
     // Ethereum
     case protocolVersion
-    case syncing
+    case isSyncing
     case coinbase
-    case mining
+    case isMining
     case hashrate
     case gasPrice
     case accounts
@@ -53,13 +53,13 @@ public enum Method {
         switch self {
         case .clientVersion:    return "web3_clientVersion"
         case .sha3:             return "web3_sha3"
-        case .version:          return "net_version"
+        case .networkID:        return "net_version"
         case .peerCount:        return "net_peerCount"
         case .listening:        return "net_listening"
         case .protocolVersion:  return "eth_protocolVersion"
-        case .syncing:          return "eth_syncing"
+        case .isSyncing:          return "eth_syncing"
         case .coinbase:         return "eth_coinbase"
-        case .mining:           return "eth_mining"
+        case .isMining:           return "eth_mining"
         case .hashrate:         return "eth_hashrate"
         case .gasPrice:         return "eth_gasPrice"
         case .accounts:         return "eth_accounts"

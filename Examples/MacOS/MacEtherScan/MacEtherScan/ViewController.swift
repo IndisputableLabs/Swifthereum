@@ -34,7 +34,7 @@ class ViewController: NSViewController {
         address.balance(swifthereum: swifthereum) { result in
             switch result {
             case .data(let balance):
-                print(BigInt(balance.remove0xPrefix(), radix: 16))
+                print(BigInt(balance.remove0xPrefix(), radix: 16)!)
             default:
                 break
             }
@@ -50,16 +50,6 @@ class ViewController: NSViewController {
     }
     
     func testAPI() {
-        /*
-        case clientVersion OK
-        case sha3(String)
-        
-        // Net
-        case version
-        case peerCount
-        case listening
-        */
-//        let address = Address(hex:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
         let transaction = TransactionHash(hex: "0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b")!
         let method = Method.transactionByHash(transaction)  //balance(address, .latest)
         swifthereum.fetch(method: method) { (result: Result<Transaction>) in

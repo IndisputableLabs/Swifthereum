@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BigInt
 
 public class Swifthereum {
     
@@ -57,4 +58,147 @@ public class Swifthereum {
             fatalError("Only web3 is currently supported")
         }
     }    
+}
+
+/*
+ *  Web3 JSON RCP Interface
+ */
+extension Swifthereum {
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#web3_clientversion
+     */
+    public func clientVersion(completion: @escaping (Result<String>) -> ()) {
+        fetch(method: .clientVersion) { (result: Result<String>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#web3_sha3
+     */
+//    public func sha3(hex: Hash, completion: @escaping (Result<Hash>) -> ()) {
+//        fetch(method: .sha3(hex) { (result: Result<String>) in
+//            completion(result)
+//        }
+//    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
+     */
+//    public func networkID(completion: @escaping (Result<NetworkID>) -> ()) {
+//        fetch(method: .networkID) { (result: Result<NetworkID>) in
+//            completion(result)
+//        }
+//    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#net_listening
+     */
+    public func networkID(completion: @escaping (Result<Bool>) -> ()) {
+        fetch(method: .listening) { (result: Result<Bool>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#net_peercount
+     */
+    public func peerCount(completion: @escaping (Result<Int>) -> ()) {
+        fetch(method: .peerCount) { (result: Result<Int>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_protocolversion
+     */
+    public func protocolVersion(completion: @escaping (Result<String>) -> ()) {
+        fetch(method: .protocolVersion) { (result: Result<String>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_syncing
+     */
+//    public func isSyncing(completion: @escaping (Result<Sync>) -> ()) {
+//        fetch(method: .syncing) { (result: Result<Sync>) in
+//            completion(result)
+//        }
+//    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_coinbase
+     */
+    public func coinbase(completion: @escaping (Result<Address>) -> ()) {
+        fetch(method: .coinbase) { (result: Result<Address>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_mining
+     */
+    public func isMining(completion: @escaping (Result<Bool>) -> ()) {
+        fetch(method: .isMining) { (result: Result<Bool>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_hashrate
+     */
+    public func hashrate(completion: @escaping (Result<Int>) -> ()) {
+        fetch(method: .hashrate) { (result: Result<Int>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_gasprice
+     */
+    public func gasPrice(completion: @escaping (Result<Wei>) -> ()) {
+        fetch(method: .gasPrice) { (result: Result<Wei>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_accounts
+     */
+    public func accounts(completion: @escaping (Result<[Account]>) -> ()) {
+        fetch(method: .accounts) { (result: Result<[Account]>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_blocknumber
+     */
+    public func latestBlock(completion: @escaping (Result<BigInt>) -> ()) {
+        fetch(method: .blockNumber) { (result: Result<BigInt>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     Returns the balance of the account of given address.
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getbalance
+     TODO: Change back to BigInt. Issue is that result is hex ("0x317604574664c00")
+     */
+    public func balance(for address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
+        let method = Method.balance(address, defaultBlock)
+        fetch(method: method) { (result: Result<String>) in
+            completion(result)
+        }
+    }
+    
+    /**
+     https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getstorageat
+     */
+    public func storage(at address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
+        fetch(method: .storage(address, defaultBlock)) { (result: Result<String>) in
+            completion(result)
+        }
+    }
 }

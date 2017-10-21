@@ -37,10 +37,13 @@ extension Address {
      Returns the balance of the account of given address.
      */
     // TODO: Change back to BigInt. Issue is that result is hex ("0x317604574664c00")
+//    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
+//        let method = Method.balance(self, defaultBlock)
+//        swifthereum.fetch(method: method) { (result: Result<String>) in
+//            completion(result)
+//        }
+//    }
     public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
-        let method = Method.balance(self, defaultBlock)
-        swifthereum.fetch(method: method) { (result: Result<String>) in
-            completion(result)
-        }
+        swifthereum.balance(for: self, completion: completion)        
     }
 }
