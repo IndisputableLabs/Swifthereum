@@ -9,12 +9,13 @@ import Foundation
 import BigInt
 
 /**
- 32-bit transaction hash
+ 32-byte transaction hash
  */
-public struct TransactionHash: Hash {
+public struct TransactionHash: HashProtocol {
+    
     public let hash: HashString
     
-    public static var hashLength: Int = 64
+    public static var hashLength: Int? = 64
     
     public init?(hex: HashString) {
         guard let hash = String(hex: hex, length: type(of: self).hashLength) else { return nil }
@@ -23,9 +24,9 @@ public struct TransactionHash: Hash {
 }
 
 extension TransactionHash {
+    
     public func transaction(swifthereum: Swifthereum, completion: @escaping (Result<Transaction>) -> ()) {
-        let method = Method.transactionByHash(self)
-        swifthereum.fetch(method: method) { (result: Result<Transaction>) in
+        swifthereum.transaction(hash: self) { (result: Result<Transaction>) in
             completion(result)
         }
     }

@@ -10,4 +10,5 @@ import Foundation
 enum SwifthereumError: Error {
     case invalidResource
     case serverError(Int, String)
+    case encodingError
 }

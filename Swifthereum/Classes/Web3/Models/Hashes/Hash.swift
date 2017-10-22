@@ -2,34 +2,22 @@
 //  Hash.swift
 //  Swifthereum
 //
-//  Created by Ronald Mannak on 10/18/17.
+//  Created by Ronald Mannak on 10/21/17.
 //
 
 import Foundation
+import BigInt
 
-public typealias HashString = String
-
-/**
- Hash protocol
+/** Generic hash of any length
  */
-public protocol Hash: Codable, Equatable, CustomStringConvertible {
+public struct Hash: HashProtocol {
     
-    /// Stores the hash without the 0x prefix
-    var hash: HashString { get }
+    public let hash: HashString
     
-    /// Hash length without the 0x prefix
-    static var hashLength: Int { get }
+    public static var hashLength: Int? = nil
     
-    init?(hex: String)
-}
-
-extension Hash {
-    
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.hash == rhs.hash
-    }
-    
-    public var description: String {
-        return "0x" + hash
+    public init?(hex: HashString) {
+        guard let hash = String(hex: hex) else { return nil }
+        self.hash = hash
     }
 }

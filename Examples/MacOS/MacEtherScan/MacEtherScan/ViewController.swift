@@ -49,13 +49,13 @@ class ViewController: NSViewController {
         }
     }
     
-    func testAPI() {
-        let transaction = TransactionHash(hex: "0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b")!
-        let method = Method.transactionByHash(transaction)  //balance(address, .latest)
-        swifthereum.fetch(method: method) { (result: Result<Transaction>) in
-            print (result)
-        }
-    }
+//    func testAPI() {
+//        let transaction = TransactionHash(hex: "0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b")!
+//        let method = Method.transactionByHash(transaction)  //balance(address, .latest)
+//        swifthereum.fetch(method: method) { (result: Result<Transaction>) in
+//            print (result)
+//        }
+//    }
 
 }
 

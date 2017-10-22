@@ -137,9 +137,12 @@ Make sure to read our guides first:
 - Code of Conduct (TODO)
 - Contribution Guidelines (TODO)
 
-## Author
+## Authors and Contributors
 
-Swifthereum is written and maintained by Ronald Mannak and Indisputable Labs. Find me on [Twitter](https://twitter.com/ronaldmannak). 
+Swifthereum is an initiative by Indisputable Labs and designed, written and maintained by:
+
+- [Ronald Mannak](https://github.com/ronaldmannak). [Twitter](https://twitter.com/ronaldmannak). 
+- [Jenny Guan](https://github.com/jnyguan)
 
 ## License
 

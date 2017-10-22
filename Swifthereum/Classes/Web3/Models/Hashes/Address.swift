@@ -8,10 +8,11 @@
 import Foundation
 import BigInt
 
-public struct Address: Hash {
+public struct Address: HashProtocol {
+
     public let hash: HashString
     
-    public static var hashLength: Int = 40
+    public static var hashLength: Int? = 40
     
     public init?(hex: HashString) {
         guard let hash = String(hex: hex, length: type(of: self).hashLength) else { return nil }

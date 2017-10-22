@@ -11,10 +11,10 @@ import BigInt
 public typealias NetworkIDValue = BigInt
 
 public enum NetworkID  {
-    case olympic                // Ethereum prerelease Testnet (OBSOLETE)
+    case olympic                // Ethereum prerelease Testnet (DEPRECATED)
     case main                   // Ethereum Main Net (Frontier, Homestead, Metropolis, Serenity)
-    case morden                 // Ethereum Morden Testnet (OBSOLETE)
-    case ropsten                // Ethereum Ropsten Testnet (OBSOLETE)
+    case morden                 // Ethereum Morden Testnet (DEPRECATED)
+    case ropsten                // Ethereum Ropsten Testnet (DEPRECATED)
     case rinkeby                // Ethereum Rinkeby Testnet
     case kovan                  // Ethereum Kovan open parity testnet
     case custom(NetworkIDValue) // Any custom network ID

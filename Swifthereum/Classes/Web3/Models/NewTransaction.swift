@@ -21,12 +21,13 @@ import Foundation
  }]
  */
 public struct NewTransaction: Codable {
-    public let from: Address
+    public let from: Address?
     public let to: Address
-    public let gas: Wei
-    public let gasPrice: Wei
-    public let value: HashString
-    public let data: String
+    public let gas: Wei?
+    public let gasPrice: Wei?
+    public let value: HashString?
+    public let data: String?
+    public let nonce: Int?
 }
 
 //extension Transaction: Codable {
