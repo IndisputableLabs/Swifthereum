@@ -8,19 +8,25 @@
 
 import Foundation
 
-public struct Provider {
+/**
+ */
+public enum Provider {
     
-    // type
-    // server
-    // 
+    ///
+    case web3(server: Server)
+    
+//    case infura(network: NetworkID, )
+    /* do we need a separate Infura option that automatically connects to the right network?
+     Mainnet    production network    https://mainnet.infura.io
+     Ropsten    test network    https://ropsten.infura.io
+     INFURAnet    test network    https://infuranet.infura.io
+     Kovan    test network    https://kovan.infura.io
+     Rinkeby    test network    https://rinkeby.infura.io
+     IPFS    gateway    https://ipfs.infura.io
+ 
+ */
+    
+    ///
+    case ipc(fileURL: URL)
 }
-
-// ws://some.local-or-remote.node:8546
-//open enum Provider {
-//    case TestRPC
-//    case Geth
-//    case HTTPProvider(url: URL)
-//}
-
-//https://stackoverflow.com/questions/2676169/ipad-objective-c-synchronous-http-request-example
 

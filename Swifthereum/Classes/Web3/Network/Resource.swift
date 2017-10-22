@@ -24,7 +24,7 @@ public enum ParameterEncoding {
     /// Only use for POST, PUT, PATCH methods
     case body
     
-    func contentType() -> String {
+    public func contentType() -> String {
         switch self {
         case .json:
             return "application/json"
@@ -36,31 +36,35 @@ public enum ParameterEncoding {
 
 public struct Resource<A: Decodable> {
     
-    let server: Server
-    let rpcMethod: String               // E.g. "web3_clientVersion"
-    let headers: JSONDictionary?
-    let parameters: JSONDictionary?     // [params: ...]
-    let httpMethod: HttpMethod
-    let encoding: ParameterEncoding
+    public let server: Server
+    public let method: String               // E.g. "eth_sign"
+    public let headers: JSONDictionary?
+    public let parameters: Decodable?             // E.g. ["0x9b2055d370f73ec7d8a03e965129118dc8f5bf83", "0xdeadbeaf"]
+    public let httpMethod: HttpMethod
+    public let encoding: ParameterEncoding
     /**
          Called by NetworkService to parse the data returned from the server. Depending on the kind of data we expect (e.g. JSON vs an image) we can set a suitable closure in the init.
      */
-    let parse: (Data) throws -> A?
+    public let parse: (Data) throws -> A?
 }
 
 extension Resource {
     
-    init(server: Server, rpcMethod: String, headers: JSONDictionary?, parameters: JSONDictionary?, httpMethod: HttpMethod, encoding: ParameterEncoding) {
+    public init(server: Server, method: String, parameters: Decodable? = nil, headers: JSONDictionary? = nil, httpMethod: HttpMethod = .post, encoding: ParameterEncoding = .json) {
         self.server = server
-        self.rpcMethod = rpcMethod
+        self.method = method
         self.headers = headers
         self.parameters = parameters
         self.httpMethod = httpMethod
         self.encoding = encoding
-        parse = { data in
+        parse = { data in            
             let encodedData = try JSONDecoder().decode(A.self, from: data)
             return encodedData
         }
+    }
+    
+    public init(server: Server, method: Method) {
+        self.init(server: server, method: method.method, parameters: method.parameters)
     }
 }
 

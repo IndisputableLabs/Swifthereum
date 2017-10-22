@@ -1,0 +1,8 @@
+platform :osx, '10.10'
+
+target 'MacEtherScan' do
+  use_frameworks!  
+  
+  pod 'Swifthereum', :path => '../../../'
+  pod 'BigInt', '~> 3.0'
+end

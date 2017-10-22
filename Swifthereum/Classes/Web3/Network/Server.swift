@@ -22,13 +22,8 @@ extension Server {
      
      Initializer located in extension, so we don't override the default initializer 
      */
-    init(domain: String? = nil) {
-        if let domain = domain {
-            self.domain = domain
-        } else {
-//        self.domain = "http://localhost.charlesproxy.com:8545"
-            self.domain = "http://localhost:8545"
-        }
+    public init(domain: String = "http://localhost:8545") {
+        self.domain = domain
     }
 }
 
