@@ -36,6 +36,7 @@ extension URLRequest {
             body = parameters.jsonEncodedData
         case .url:
             if let parameters = parameters.urlEncodedString {
+                print("parameters: \(parameters)")
                 endPoint += "?\(parameters)"
             }
         case .body:

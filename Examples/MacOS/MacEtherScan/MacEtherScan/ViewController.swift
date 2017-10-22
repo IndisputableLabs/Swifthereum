@@ -23,9 +23,11 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getBalance()
+//        getBalance()
 //        getTransaction()
-//        testAPI()
+//        getAccounts()
+//        testParameters()
+        gasPrice()
     }
     
     func getBalance() {
@@ -34,7 +36,8 @@ class ViewController: NSViewController {
         address.balance(swifthereum: swifthereum) { result in
             switch result {
             case .data(let balance):
-                print(BigInt(balance.remove0xPrefix(), radix: 16)!)
+                break
+                //print(BigInt(balance.remove0xPrefix(), radix: 16)!)
             default:
                 break
             }
@@ -49,13 +52,84 @@ class ViewController: NSViewController {
         }
     }
     
-//    func testAPI() {
-//        let transaction = TransactionHash(hex: "0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b")!
-//        let method = Method.transactionByHash(transaction)  //balance(address, .latest)
-//        swifthereum.fetch(method: method) { (result: Result<Transaction>) in
-//            print (result)
-//        }
-//    }
+    func gasPrice() {
+        self.swifthereum.gasPrice(completion: { (result) in
+            switch result {
+            case .data(let weiString):
+                let gasPrice = BigInt(weiString)!
+                print(gasPrice)
+                //                        let estTransaction = NewTransaction(from: firstAccount, to: secondAccount, gasPrice: gasPrice)
+                //
+            //                        self.swifthereum.estimateGas(for: <#T##NewTransaction#>, completion: <#T##(Result<String>) -> ()#>)
+            default: fatalError()
+            }
+        })
+    }
+    
+    func getAccounts() {
+        swifthereum.accounts { result in
+            
+            switch result {
+            case .data(let accounts):
+                guard let firstAccount = accounts.first else { fatalError() }
+                let secondAccount = accounts[2]
+                
+                self.swifthereum.gasPrice(completion: { (result) in
+                    switch result {
+                    case .data(let weiString):
+                        let gasPrice = BigInt(weiString)!
+                        print(gasPrice)
+//                        let estTransaction = NewTransaction(from: firstAccount, to: secondAccount, gasPrice: gasPrice)
+//
+//                        self.swifthereum.estimateGas(for: <#T##NewTransaction#>, completion: <#T##(Result<String>) -> ()#>)
+                    default: fatalError()
+                    }
+                })
+                
+                
+                
+                
+//                let transaction = NewTransaction(
+//                public let from: Address?
+//                public let to: Address
+//                public let gas: Wei?
+//                public let gasPrice: Wei?
+//                public let value: HashString?
+//                public let data: String?
+//                public let nonce: Int?
+//                )
+//                print("Account: \(firstAccount)")
+//
+                
+            default:
+                fatalError()
+            }
+        }
+    }
+    
+    func testParameters() {
+        
+        swifthereum.balance(for: Address(hex: "0xb81df5747f39bfd5ce9410f1be9b02851b0cbd6e")!) { result in
+            print("result")
+        }
+        
+        /*
+         case .balance(let address, let defaultBlock):
+        return [String(describing: address), defaultBlock.value]
+        case .storage(let address, let defaultBlock):
+        return [String(describing: address), defaultBlock.value]
+        case .transactionCount(let address, let defaultBlock):
+        return [String(describing: address), defaultBlock.value]
+        case .blockTransactionCount(let blockHash):
+        return String(describing: blockHash)
+        case .blockTransactionCountByNumber(let number):
+        return "\(number)"
+        case .uncleCount(let blockHash):
+        return String(describing: blockHash)
+        case .uncleCountByBlockNumber(let number):
+        return "\(number)"
+         */
+    }
 
 }
 

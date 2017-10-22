@@ -20,7 +20,7 @@ import Foundation
  "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
  }]
  */
-public struct NewTransaction: Codable {
+public struct NewTransaction {
     public let from: Address?
     public let to: Address
     public let gas: Wei?
@@ -30,7 +30,6 @@ public struct NewTransaction: Codable {
     public let nonce: Int?
 }
 
-//extension Transaction: Codable {
-//
+//extension NewTransaction: Codable {
 //}
 

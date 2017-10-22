@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/Swifthereum.svg?style=flat)](http://cocoapods.org/pods/Swifthereum)
 [![Platform](https://img.shields.io/cocoapods/p/Swifthereum.svg?style=flat)](http://cocoapods.org/pods/Swifthereum)
 
+![Swifthereum Logo](Images/logo.png)
+
 Swifthereum is a native Swift framework that provides access to the [Go Ethereum](https://github.com/ethereum/go-ethereum/) framework in a Swift-friendly way. Swifthereum makes it easy and fast to develop native dApps on iOS and MacOS.
 
 ## Versions

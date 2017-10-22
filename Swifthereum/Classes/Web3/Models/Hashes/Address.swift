@@ -12,7 +12,7 @@ public struct Address: HashProtocol {
 
     public let hash: HashString
     
-    public static var hashLength: Int? = 40
+    public static var hashLength: Int? = 40 // 20 bytes
     
     public init?(hex: HashString) {
         guard let hash = String(hex: hex, length: type(of: self).hashLength) else { return nil }
@@ -44,7 +44,7 @@ extension Address {
 //            completion(result)
 //        }
 //    }
-    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
+    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) {
         swifthereum.balance(for: self, completion: completion)        
     }
 }

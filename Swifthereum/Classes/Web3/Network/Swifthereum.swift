@@ -157,8 +157,8 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_gasprice
      */
-    public func gasPrice(completion: @escaping (Result<Wei>) -> ()) {
-        fetch(method: .gasPrice) { (result: Result<Wei>) in
+    public func gasPrice(completion: @escaping (Result<String>) -> ()) {
+        fetch(method: .gasPrice) { (result: Result<String>) in
             completion(result)
         }
     }
@@ -166,8 +166,8 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_accounts
      */
-    public func accounts(completion: @escaping (Result<[Account]>) -> ()) {
-        fetch(method: .accounts) { (result: Result<[Account]>) in
+    public func accounts(completion: @escaping (Result<[String]>) -> ()) {
+        fetch(method: .accounts) { (result: Result<[String]>) in
             completion(result)
         }
     }
@@ -186,9 +186,9 @@ extension Swifthereum {
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getbalance
      TODO: Change back to BigInt. Issue is that result is hex ("0x317604574664c00")
      */
-    public func balance(for address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
+    public func balance(for address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) {
         let method = Method.balance(address, defaultBlock)
-        fetch(method: method) { (result: Result<String>) in
+        fetch(method: method) { (result: Result<Wei>) in
             completion(result)
         }
     }

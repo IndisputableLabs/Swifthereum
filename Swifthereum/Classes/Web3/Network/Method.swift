@@ -165,9 +165,23 @@ extension Method {
             return [String(describing: address), defaultBlock.value]
         case .transactionCount(let address, let defaultBlock):
             return [String(describing: address), defaultBlock.value]
-        case .sendTransaction(let transaction):
-            let encoder = JSONEncoder()
-            return try? encoder.encode(transaction)
+        case .blockTransactionCount(let blockHash):
+            return String(describing: blockHash)
+        case .blockTransactionCountByNumber(let number):
+            return "\(number)"
+        case .uncleCount(let blockHash):
+            return String(describing: blockHash)
+        case .uncleCountByBlockNumber(let number):
+            return "\(number)"
+//        case .code(let address, let defaultBlock):
+//            return
+            
+            
+            
+            
+//        case .sendTransaction(let transaction):
+//            let encoder = JSONEncoder()
+//            return try? encoder.encode(transaction)
         case .transaction(let hash):
             return [String(describing: hash)]
         default:
@@ -175,3 +189,34 @@ extension Method {
         }
     }
 }
+
+/*
+case code(Address, DefaultBlock)
+case sign(Address, String)
+case sendTransaction(NewTransaction)
+case sendRawTransaction(TransactionHash)
+case call(NewTransaction)
+case estimateGas(NewTransaction)
+case blockByHash(BlockHash)
+case blockByNumber(Int64)
+case transaction(TransactionHash)
+case transactionByBlockHashAndIndex(BlockHash, Int)
+case transactionByBlockNumberAndIndex(Int64, Int)
+case receipt(TransactionHash)
+case uncleByBlockHashAndIndex(BlockHash, Int)
+case uncleByBlockNumberAndIndex(Int, Int)
+case compilers
+case compileSolidity(String)
+case compileLLL(String)
+case compileSerpent(String)
+case notification(EthereumNotification)
+case newBlockNotification
+case newPendingTransactionNotification
+case uninstallNotification(Int64)
+case notificationChanges(Int64)
+case notificationLogs(Int64)
+case logs(EthereumNotification)
+case work
+case submitWork(Work)
+case submitHashrate(Bytes32Hash, Bytes32Hash)
+*/
