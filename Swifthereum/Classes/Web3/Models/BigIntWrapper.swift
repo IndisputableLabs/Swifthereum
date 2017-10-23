@@ -17,7 +17,7 @@ public struct BigIntWrapper: Decodable {
     public init(from decoder: Decoder) throws {
         
         // If big int is unkeyed
-        var container = try decoder.singleValueContainer()  // unkeyedContainer() // could be in result or a value
+        let container = try decoder.singleValueContainer()  // unkeyedContainer() // could be in result or a value
         var bigIntString = try container.decode(String.self)
         
         if bigIntString.hasPrefix("0x") {
