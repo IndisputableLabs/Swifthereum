@@ -60,6 +60,23 @@ public class Swifthereum {
     }    
 }
 
+extension Swifthereum {
+    
+    /** Unwraps a BigIntWrapper Result to a BigInt Result
+     Used to decode Ethereum's hex strings into BigInt
+     */
+    func unwrap(_ result: Result<BigIntWrapper>) -> Result<BigInt> {
+        switch result {
+        case .data(let wrapper):
+            return Result<Wei>.data(wrapper.bigInt)
+        case .error(let error):
+            return Result<Wei>.error(error)
+        case .noData:
+            return Result<Wei>.noData
+        }
+    }
+}
+
 /*
  *  Web3 JSON RCP Interface
  */
@@ -157,9 +174,9 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_gasprice
      */
-    public func gasPrice(completion: @escaping (Result<String>) -> ()) {
-        fetch(method: .gasPrice) { (result: Result<String>) in
-            completion(result)
+    public func gasPrice(completion: @escaping (Result<Wei>) -> ()) {
+        fetch(method: .gasPrice) { (result: Result<BigIntWrapper>) in
+            completion(self.unwrap(result))
         }
     }
     
@@ -176,8 +193,8 @@ extension Swifthereum {
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_blocknumber
      */
     public func latestBlock(completion: @escaping (Result<BigInt>) -> ()) {
-        fetch(method: .blockNumber) { (result: Result<BigInt>) in
-            completion(result)
+        fetch(method: .blockNumber) { (result: Result<BigIntWrapper>) in
+            completion(self.unwrap(result))
         }
     }
     
@@ -188,8 +205,8 @@ extension Swifthereum {
      */
     public func balance(for address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) {
         let method = Method.balance(address, defaultBlock)
-        fetch(method: method) { (result: Result<Wei>) in
-            completion(result)
+        fetch(method: method) { (result: Result<BigIntWrapper>) in
+            completion(self.unwrap(result))
         }
     }
     

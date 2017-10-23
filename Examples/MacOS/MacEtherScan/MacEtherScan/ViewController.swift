@@ -23,20 +23,20 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        getBalance()
+        getBalance()
 //        getTransaction()
-//        getAccounts()
+        getAccounts()
 //        testParameters()
-        gasPrice()
+        self.gasPrice()
     }
     
     func getBalance() {
-        let address = Address(hex:"0x3914bff975ef35e8d3403e1ea953bf886b0e8fea")!
+        let address = Address(hex:"0xb81df5747f39bfd5ce9410f1be9b02851b0cbd6e")!
         print(address)
         address.balance(swifthereum: swifthereum) { result in
             switch result {
             case .data(let balance):
-                break
+                print("Balance: \(balance.formattedBalance(unit: .ether)) Ether")
                 //print(BigInt(balance.remove0xPrefix(), radix: 16)!)
             default:
                 break
@@ -55,12 +55,10 @@ class ViewController: NSViewController {
     func gasPrice() {
         self.swifthereum.gasPrice(completion: { (result) in
             switch result {
-            case .data(let weiString):
-                let gasPrice = BigInt(weiString)!
-                print(gasPrice)
-                //                        let estTransaction = NewTransaction(from: firstAccount, to: secondAccount, gasPrice: gasPrice)
-                //
-            //                        self.swifthereum.estimateGas(for: <#T##NewTransaction#>, completion: <#T##(Result<String>) -> ()#>)
+            case .data(let wei):
+                let gasPrice = wei.formattedBalance(unit: .gwei)
+                print("gas price: \(gasPrice) gwei")
+//                self.getAccounts()
             default: fatalError()
             }
         })
@@ -68,23 +66,23 @@ class ViewController: NSViewController {
     
     func getAccounts() {
         swifthereum.accounts { result in
-            
+    
             switch result {
             case .data(let accounts):
-                guard let firstAccount = accounts.first else { fatalError() }
-                let secondAccount = accounts[2]
-                
-                self.swifthereum.gasPrice(completion: { (result) in
-                    switch result {
-                    case .data(let weiString):
-                        let gasPrice = BigInt(weiString)!
-                        print(gasPrice)
-//                        let estTransaction = NewTransaction(from: firstAccount, to: secondAccount, gasPrice: gasPrice)
+                print(accounts)
+//                guard let firstAccount = accounts.first else { fatalError() }
+//                let secondAccount = accounts[2]
 //
-//                        self.swifthereum.estimateGas(for: <#T##NewTransaction#>, completion: <#T##(Result<String>) -> ()#>)
-                    default: fatalError()
-                    }
-                })
+//                self.swifthereum.gasPrice(completion: { (result) in
+//                    switch result {
+//                    case .data(let weiString):
+//                        print("gas price: \(weiString) ETH")
+////                        let estTransaction = NewTransaction(from: firstAccount, to: secondAccount, gasPrice: gasPrice)
+////
+////                        self.swifthereum.estimateGas(for: <#T##NewTransaction#>, completion: <#T##(Result<String>) -> ()#>)
+//                    default: fatalError()
+//                    }
+//                })
                 
                 
                 
@@ -106,7 +104,7 @@ class ViewController: NSViewController {
             }
         }
     }
-    
+//
     func testParameters() {
         
         swifthereum.balance(for: Address(hex: "0xb81df5747f39bfd5ce9410f1be9b02851b0cbd6e")!) { result in
