@@ -1,5 +1,5 @@
 //
-//  Method.swift
+//  NetworkMethod.swift
 //  Swifthereum
 //
 //  Created by Ronald Mannak on 10/19/17.
@@ -10,7 +10,7 @@ import Foundation
 /**
  https://github.com/ethereum/wiki/wiki/JSON-RPC
  */
-public enum Method {
+public enum NetworkMethod {
     
     // Web3
     case clientVersion
@@ -31,7 +31,7 @@ public enum Method {
     case accounts
     case blockNumber
     case balance(Address, DefaultBlock)
-    case storage(Address, DefaultBlock)
+//    case storage(Address, DefaultBlock)
     case transactionCount(Address, DefaultBlock)
     case blockTransactionCount(BlockHash)
     case blockTransactionCountByNumber(Int64)
@@ -85,7 +85,7 @@ public enum Method {
     case sshGetMessages
 }
 
-extension Method {
+extension NetworkMethod {
     public var method: String {
         switch self {
         case .clientVersion:                    return "web3_clientVersion"
@@ -102,7 +102,7 @@ extension Method {
         case .accounts:                         return "eth_accounts"
         case .blockNumber:                      return "eth_blockNumber"
         case .balance:                          return "eth_getBalance"
-        case .storage:                          return "eth_getStorageAt"
+//        case .storage:                          return "eth_getStorageAt"
         case .transactionCount:                 return "eth_getTransactionCount"
         case .blockTransactionCount:            return "eth_getBlockTransactionCountByHash"
         case .blockTransactionCountByNumber:    return "eth_getBlockTransactionCountByNumber"
@@ -154,15 +154,15 @@ extension Method {
     }
 }
 
-extension Method {
+extension NetworkMethod {
     public var parameters: Decodable? {
         switch self {
         case .sha3(let string):
             return [string]
         case .balance(let address, let defaultBlock):
             return [String(describing: address), defaultBlock.value]
-        case .storage(let address, let defaultBlock):
-            return [String(describing: address), defaultBlock.value]
+//        case .storage(let address, let defaultBlock):
+//            return [String(describing: address), defaultBlock.value]
         case .transactionCount(let address, let defaultBlock):
             return [String(describing: address), defaultBlock.value]
         case .blockTransactionCount(let blockHash):

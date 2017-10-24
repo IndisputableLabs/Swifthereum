@@ -63,7 +63,7 @@ extension Resource {
         }
     }
     
-    public init(server: Server, method: Method) {
+    public init(server: Server, method: NetworkMethod) {
         self.init(server: server, method: method.method, parameters: method.parameters)
     }
 }

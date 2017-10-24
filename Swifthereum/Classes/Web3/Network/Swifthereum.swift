@@ -18,7 +18,7 @@ public class Swifthereum {
         self.provider = provider
     }
     
-    public func fetch<A: Decodable>(method: Method, completion: @escaping (Result<A>) -> ()) {
+    public func fetch<A: Decodable>(method: NetworkMethod, completion: @escaping (Result<A>) -> ()) {
         switch provider {
         case .web3(let server):
             let resource = Resource<Web3Result<A>>(server: server, method: method)
@@ -204,7 +204,7 @@ extension Swifthereum {
      TODO: Change back to BigInt. Issue is that result is hex ("0x317604574664c00")
      */
     public func balance(for address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) {
-        let method = Method.balance(address, defaultBlock)
+        let method = NetworkMethod.balance(address, defaultBlock)
         fetch(method: method) { (result: Result<BigIntWrapper>) in
             completion(self.unwrap(result))
         }
@@ -213,11 +213,11 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getstorageat
      */
-    public func storage(at address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
-        fetch(method: .storage(address, defaultBlock)) { (result: Result<String>) in
-            completion(result)
-        }
-    }
+//    public func storage(at address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<String>) -> ()) {
+//        fetch(method: .storage(address, defaultBlock)) { (result: Result<String>) in
+//            completion(result)
+//        }
+//    }
     
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_gettransactioncount

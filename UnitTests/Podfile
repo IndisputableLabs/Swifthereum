@@ -1,0 +1,14 @@
+platform :osx, '10.10'
+
+target 'Unit' do
+  use_frameworks!
+
+  pod 'Swifthereum', :path => '../'
+  pod 'BigInt', '~> 3.0'
+
+  target 'UnitTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

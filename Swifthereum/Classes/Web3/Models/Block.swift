@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BigInt
 
 /**
  number: QUANTITY - the block number. null when its pending block.
@@ -29,24 +30,69 @@ import Foundation
  uncles: Array - Array of uncle hashes.
  */
 public struct Block {
-    let number: Int64?
-    let blockHash: BlockHash?
-    let parentHash: BlockHash?
-    let nonce: Hash?
-    let sha3Uncles: [BlockHash] //?
-    let logsBloom: String
-    let transactionsRoot: Hash
-    let stateRoot: Hash
-    let receiptRoot: Hash
-    let miner: Address
-    let difficulty: String //BigInt
-    let totalDifficulty: String //BigInt
-    let extraData: String
-    let size: String //Int64
-    let gasLimit: String //BigInt
-    let gasUsed: String //BigInt
-    let timeStamp: String //TimeInterval
-    let transactions: [Transaction]?
-    let transactionHashes: [TransactionHash]?
-    let uncles: [BlockHash]
+    public let number: Int64?
+    public let blockHash: BlockHash?
+    public let parentHash: BlockHash?
+    public let nonce: Hash?
+    public let sha3Uncles: [BlockHash]?
+    public let logsBloom: Hash
+    public let transactionsRoot: Hash
+    public let stateRoot: Hash
+//    public let receiptRoot: Hash? Not in JSON?
+    public let miner: Address
+    public let difficulty: BigInt
+    public let totalDifficulty: BigInt
+    public let extraData: Hash?
+    public let size: Int64
+    public let gasLimit: Wei
+    public let gasUsed: Wei
+    public let timeStamp: TimeInterval
+    public let transactions: [TransactionHash]?
+//    public let transactionHashes: [TransactionHash]? Not in JSON
+    public let uncles: [BlockHash]?
+
+    // Initializers of public structs are internal
+    // https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID3
+    public init(number: Int64?,
+                blockHash: BlockHash?,
+                parentHash: BlockHash?,
+                nonce: Hash?,
+                sha3Uncles: [BlockHash]?,
+                logsBloom: Hash,
+                transactionsRoot: Hash,
+                stateRoot: Hash,
+                miner: Address,
+                difficulty: BigInt,
+                totalDifficulty: BigInt,
+                extraData: Hash?,
+                size: Int64,
+                gasLimit: Wei,
+                gasUsed: Wei,
+                timeStamp: TimeInterval,
+                transactions: [TransactionHash]?,
+                uncles: [BlockHash]?) {
+        self.number = number
+        self.blockHash = blockHash
+        self.parentHash = parentHash
+        self.nonce = nonce
+        self.sha3Uncles = sha3Uncles
+        self.logsBloom = logsBloom
+        self.transactionsRoot = transactionsRoot
+        self.stateRoot = stateRoot
+        self.miner = miner
+        self.difficulty = difficulty
+        self.totalDifficulty = totalDifficulty
+        self.extraData = extraData
+        self.size = size
+        self.gasLimit = gasLimit
+        self.gasUsed = gasUsed
+        self.timeStamp = timeStamp
+        self.transactions = transactions
+        self.uncles = uncles
+    }
 }
+
+//extension Block: Codable {
+//
+//}
+
