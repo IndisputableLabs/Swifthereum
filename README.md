@@ -16,17 +16,17 @@ Swifthereum supports the following Ethereum interfaces:
 - Web3 Interface
 
 	The default interface will either connect to a local Geth instance over HTTP or a service like [Infura](https://infura.io) over HTTPS.
-	
+
 - IPC
 
 	Not supported yet.
-	
+
 - Mobile Geth API (**Experimental**. iOS only)
 
 	Swifthereum wraps the Mobile Geth framework into a Swift friendly framework. Mobile Geth is only available for iOS, not for MacOS. Mobile Geth runs a Ethereum light node on the iOS device and will need to sync with the Ethereum network to work.
-	
+
 	Mobile Geth is highly experimental and the current version is not Swift friendly. It is not recommended to use the Geth API in products. Instead, use the Web3 interface.
-	
+
 
 ## Common Features
 
@@ -102,13 +102,13 @@ print("\(balance.formattedBalance(.micro)) MICRO")
 The latest list of ERC-20 tokens can be fetched using the following code.
 
 ````swift
-ERC20Token.fetchTokens { tokens, error in 
+ERC20Token.fetchTokens { tokens, error in
 	guard let tokens = tokens, let kinToken = tokens.filter { $0.symbol == "KIN" }.first else {
 		// Handle error
 	}
 	do {
 		let kinBalance = try Address(hex:"0x548429264DAcf79e7c96aC00D3d12760922d4c31")
-		let balance = try client.balance(for: address, token: kinToken) 
+		let balance = try client.balance(for: address, token: kinToken)
 		print("Balance: \(balance.formattedBalance()) KIN")
 	} catch {
 		// Handle error
@@ -121,7 +121,7 @@ ERC20Token.fetchTokens { tokens, error in
 Swifthereum was developed as part of Indisputable Lab's entry for the Consensys BSIC hackathon. The current version is a pre-release and should not be used in production.
 
 - Swifthereum has not been thouroughly tested.
-- The Swifthereum API will change radically. A major refactoring of the code is planned. 
+- The Swifthereum API will change radically. A major refactoring of the code is planned.
 - As of Geth 1.7.1, Geth passes variables as implicitly unwrapped optionals (e.g. ````GethAddress!````) by default. Swifthereum does not check for nil pointers and will crash if Geth passes a nil pointer as an implicitly unwrapped optional, which can happen. This issue is tracked as Geth issue [#15240](https://github.com/ethereum/go-ethereum/issues/15240).
 - The Geth API is not fully implemented yet.
 - Some GETH methods sometimes seem to block the main thread for a few seconds. One possibility is to refactor all Swifthereum calls as asynchronous. This would also open up the possibility of using Web3 with the same interface for use with for example (Infura)[https://infura.io]. Feedback is welcome.
@@ -137,13 +137,14 @@ Thank you for your interest in the project. We appreciate contributions.
 Make sure to read our guides first:
 
 - Code of Conduct (TODO)
+
 - Contribution Guidelines (TODO)
 
 ## Authors and Contributors
 
 Swifthereum is an initiative by Indisputable Labs and designed, written and maintained by:
 
-- [Ronald Mannak](https://github.com/ronaldmannak). [Twitter](https://twitter.com/ronaldmannak). 
+- [Ronald Mannak](https://github.com/ronaldmannak). [Twitter](https://twitter.com/ronaldmannak).
 - [Jenny Guan](https://github.com/jnyguan)
 
 ## License
