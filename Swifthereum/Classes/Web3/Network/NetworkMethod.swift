@@ -73,16 +73,16 @@ public enum NetworkMethod {
     case getHex(String, String)
     
     // SSH
-    case sshPost
     case sshVersion
+    case sshPost
     case sshNewIdentity
-    case sshHasIdentiy
+    case sshHasIdentity //(String)
     case sshNewGroup
-    case sshAddToGroup
-    case sshNewFilter
-    case sshUninstallFilter
-    case sshGetFilterChanges
-    case sshGetMessages
+    case sshAddToGroup //(String)
+    case sshNewFilter // ()...
+    case sshUninstallFilter // ()..
+    case sshGetFilterChanges // ()..
+    case sshGetMessages // ()..
 }
 
 extension NetworkMethod {
@@ -140,10 +140,10 @@ extension NetworkMethod {
         case .getString:                        return "db_getString"
         case .putHex:                           return "db_putHex"
         case .getHex:                           return "db_getHex"
-        case .sshPost:                          return "shh_post"
         case .sshVersion:                       return "shh_version"
+        case .sshPost:                          return "shh_post"
         case .sshNewIdentity:                   return "shh_newIdentity"
-        case .sshHasIdentiy:                    return "shh_hasIdentity"
+        case .sshHasIdentity:                    return "shh_hasIdentity"
         case .sshNewGroup:                      return "shh_newGroup"
         case .sshAddToGroup:                    return "shh_addToGroup"
         case .sshNewFilter:                     return "shh_newFilter"
