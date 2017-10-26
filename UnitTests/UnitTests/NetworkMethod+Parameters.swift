@@ -69,9 +69,30 @@ extension NetworkMethod {
         case .blockTransactionCount(_): return """
             {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}
             """
-        case .blockTransactionCountByNumber(_): return """
-            {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["0xe8"],"id":1}
-            """
+        case .blockTransactionCountByNumber(let defaultBlock):
+            switch defaultBlock {
+            case .number(_):
+                return """
+                {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["0xe8"],"id":1}
+                """
+            case .earliest:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["earliest"],"id":1}
+                """
+            case .genesis:
+                // genesis is not listed as a valid parameter in the documentation
+                return """
+                {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["genesis"],"id":1}
+                """
+            case .latest:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["latest"],"id":1}
+                """
+            case .pending:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["pending"],"id":1}
+                """
+            }
         case .uncleCount(_): return """
             {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}
             """

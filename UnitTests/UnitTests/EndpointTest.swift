@@ -53,22 +53,14 @@ class EndpointTest: XCTestCase {
     
     func testTransactionCount() throws { try endpoint(for: .transactionCount(Address(hex: "0x407d73d8a49eeb85d32cf465507dd71d507100c1")!, .latest)) }
     func testBlockTransactionCount() throws { try endpoint(for: .blockTransactionCount(BlockHash(hex: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238")!)) }
-    func testBlockTransactionCountByNumber() throws {
-        try endpoint(for: .blockTransactionCountByNumber(.number(232)))
-    }
-    
-//    func testBlockTransactionCountByNumber2() throws {
-//        try endpoint(for: .blockTransactionCountByNumber(.defaultBlock(.)
-//            number(BigInt(232))))
-//    }
+    func testBlockTransactionCountByNumber() throws { try endpoint(for: .blockTransactionCountByNumber(.number(232))) }
+    func testBlockTransactionCountByNumber2() throws { try endpoint(for: .blockTransactionCountByNumber(.earliest)) }
+    func testBlockTransactionCountByNumber3() throws { try endpoint(for: .blockTransactionCountByNumber(.latest)) }
+    func testBlockTransactionCountByNumber4() throws { try endpoint(for: .blockTransactionCountByNumber(.pending)) }
+    func testBlockTransactionCountByNumber5() throws { try endpoint(for: .blockTransactionCountByNumber(.genesis)) }
     
     /*
         /*
-        
-     
-        case .blockTransactionCountByNumber(_): return """
-        {"id":1,"jsonrpc":"2.0","result":"0xa"}
-        """
         case .uncleCount(_): return """
         {"id":1,"jsonrpc":"2.0","result":"0x1"}
         """
