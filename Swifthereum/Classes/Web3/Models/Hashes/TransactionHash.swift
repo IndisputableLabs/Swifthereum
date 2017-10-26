@@ -25,8 +25,8 @@ public struct TransactionHash: HashProtocol {
 
 extension TransactionHash {
     
-    public func transaction(swifthereum: Swifthereum, completion: @escaping (Result<Transaction>) -> ()) {
-        swifthereum.transaction(hash: self) { (result: Result<Transaction>) in
+    public func transaction(swifthereum: Swifthereum, completion: @escaping (Result<Transaction>) -> ()) throws {
+        try swifthereum.transaction(hash: self) { (result: Result<Transaction>) in
             completion(result)
         }
     }

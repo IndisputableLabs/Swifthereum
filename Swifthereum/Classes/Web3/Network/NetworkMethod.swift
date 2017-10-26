@@ -74,13 +74,13 @@ public enum NetworkMethod {
     
     // SSH
     case sshVersion
-    case sshPost
+    case sshPost(WhisperPost)
     case sshNewIdentity
     case sshHasIdentity //(String)
     case sshNewGroup
     case sshAddToGroup //(String)
     case sshNewFilter // ()...
-    case sshUninstallFilter // ()..
+    case sshUninstallFilter(Int64)
     case sshGetFilterChanges // ()..
     case sshGetMessages // ()..
 }
@@ -155,7 +155,7 @@ extension NetworkMethod {
 }
 
 extension NetworkMethod {
-    public var parameters: Decodable? {
+    public var parameters: [Encodable?] {
         switch self {
         case .sha3(let string):
             return [string]
@@ -166,13 +166,13 @@ extension NetworkMethod {
         case .transactionCount(let address, let defaultBlock):
             return [String(describing: address), defaultBlock.value]
         case .blockTransactionCount(let blockHash):
-            return String(describing: blockHash)
+            return [String(describing: blockHash)]
         case .blockTransactionCountByNumber(let number):
-            return "\(number)"
+            return ["\(number)"]
         case .uncleCount(let blockHash):
-            return String(describing: blockHash)
+            return [String(describing: blockHash)]
         case .uncleCountByBlockNumber(let number):
-            return "\(number)"
+            return ["\(number)"]
 //        case .code(let address, let defaultBlock):
 //            return
             
@@ -184,8 +184,16 @@ extension NetworkMethod {
 //            return try? encoder.encode(transaction)
         case .transaction(let hash):
             return [String(describing: hash)]
+        case .sshPost(let post):
+            return [post]
+//            let encoder = JSONEncoder()
+//            let encoded = try? encoder.encode(post)
+//            print(encoded!)
+//            return try? encoder.encode(post)
+        case .sshUninstallFilter(let filterID):
+            return ["\(filterID.hexValue)"]
         default:
-            return nil
+            return [String]()
         }
     }
 }

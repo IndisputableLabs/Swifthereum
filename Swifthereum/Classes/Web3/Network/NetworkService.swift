@@ -23,39 +23,43 @@ open class NetworkService: NSObject, URLSessionDelegate {
     
 //    fileprivate static let syncQueue = DispatchQueue(label: "NetworkService.syncQueue")
     
-    open func load<A>(resource: Resource<A>, debug: Bool = false, completion: @escaping (Result<A>) -> ()) {
+    open func load<A>(resource: Resource<A>, debug: Bool = false, completion: @escaping (Result<A>) -> ()) throws {
         
-//        NetworkService.syncQueue.sync {        
-        guard let request = URLRequest(resource: resource) else {
-            completion(Result.error(SwifthereumError.invalidResource))
-            return            
-        }
-        let session = URLSession(configuration: URLSessionConfiguration.default) //, delegate: nil, delegateQueue: nil)
-        session.dataTask(with: request) {data, response, error in
-            if debug == true { self.debugPrint(data: data, response: response, error: error) }
+//        NetworkService.syncQueue.sync {
+        do {
+            let request = try URLRequest(resource: resource)
+            let session = URLSession(configuration: URLSessionConfiguration.default) //, delegate: nil, delegateQueue: nil)
+            session.dataTask(with: request) { data, response, error in
+                
+                if debug == true { self.debugPrint(data: data, response: response, error: error) }
 
-            guard error == nil else {
-                completion(.error(error!))
-                return
-            }
-            guard let data = data else {
-                completion(.noData)
-                return
-            }
-            do {
-                if let result = try resource.parse(data) {
-                    completion(.data(result))
+                guard error == nil else {
+                    completion(.error(error!))
                     return
-                } else {
+                }
+                guard let data = data else {
                     completion(.noData)
                     return
                 }
+            
+                do {
+                    if let result = try resource.parse(data) {
+                        completion(.data(result))
+                        return
+                    } else {
+                        completion(.noData)
+                        return
+                    }
                 
-            } catch {
-                completion(.error(error))
-                return
-            }
-        }.resume()
+                } catch {
+                    completion(.error(error))
+                    return
+                }
+            }.resume()
+        } catch {
+            completion(.error(error))
+            return
+        }
 //    }
     }
     

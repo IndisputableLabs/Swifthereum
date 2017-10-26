@@ -21,7 +21,3 @@ public struct BlockHash: HashProtocol {
         self.hash = hash
     }
 }
-
-extension BlockHash {
-    
-}

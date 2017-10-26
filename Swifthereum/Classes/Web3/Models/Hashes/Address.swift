@@ -44,7 +44,7 @@ extension Address {
 //            completion(result)
 //        }
 //    }
-    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) {
-        swifthereum.balance(for: self, completion: completion)        
+    public func balance(swifthereum: Swifthereum, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) throws {
+        try swifthereum.balance(for: self, completion: completion)
     }
 }

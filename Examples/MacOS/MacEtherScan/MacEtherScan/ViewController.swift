@@ -23,17 +23,21 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getBalance()
-//        getTransaction()
-        getAccounts()
-//        testParameters()
-        self.gasPrice()
+        do {
+            try getBalance()
+            try getTransaction()
+            try getAccounts()
+            try testParameters()
+            try gasPrice()
+        } catch {
+            print(error)
+        }
     }
     
-    func getBalance() {
+    func getBalance() throws {
         let address = Address(hex:"0xb81df5747f39bfd5ce9410f1be9b02851b0cbd6e")!
         print(address)
-        address.balance(swifthereum: swifthereum) { result in
+        try address.balance(swifthereum: swifthereum) { result in
             switch result {
             case .data(let balance):
                 print("Balance: \(balance.formattedBalance(unit: .ether)) Ether")
@@ -45,15 +49,15 @@ class ViewController: NSViewController {
         }
     }
     
-    func getTransaction() {
+    func getTransaction() throws {
         let transaction = TransactionHash(hex: "0x7f853aea006cf7eb1f06b6aefcb1049a48a49bd93a0ae70e7e85b7b284d7662b")!
-        transaction.transaction(swifthereum: swifthereum) { result in
+        try transaction.transaction(swifthereum: swifthereum) { result in
             print(result)
         }
     }
     
-    func gasPrice() {
-        self.swifthereum.gasPrice(completion: { (result) in
+    func gasPrice() throws {
+        try self.swifthereum.gasPrice(completion: { (result) in
             switch result {
             case .data(let wei):
                 let gasPrice = wei.formattedBalance(unit: .gwei)
@@ -64,8 +68,8 @@ class ViewController: NSViewController {
         })
     }
     
-    func getAccounts() {
-        swifthereum.accounts { result in
+    func getAccounts() throws {
+        try swifthereum.accounts { result in
     
             switch result {
             case .data(let accounts):
@@ -105,9 +109,9 @@ class ViewController: NSViewController {
         }
     }
 //
-    func testParameters() {
+    func testParameters() throws {
         
-        swifthereum.balance(for: Address(hex: "0xb81df5747f39bfd5ce9410f1be9b02851b0cbd6e")!) { result in
+        try swifthereum.balance(for: Address(hex: "0xb81df5747f39bfd5ce9410f1be9b02851b0cbd6e")!) { result in
             print("result")
         }
         

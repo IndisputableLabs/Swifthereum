@@ -11,7 +11,7 @@ import Foundation
 
 extension URLRequest {
     
-    public init?<A>(resource: Resource<A>) {
+    public init<A>(resource: Resource<A>) throws {
         
         /*
          Merge server and resource parameters.
@@ -42,7 +42,7 @@ extension URLRequest {
         case .body:
             body = parameters.bodyEncodedData
         }
-        guard let url = URL(string: endPoint) else { return  nil }
+        guard let url = URL(string: endPoint) else { throw SwifthereumError.unexpectedNilError }
         self.init(url: url)
     
         httpBody = body

@@ -30,32 +30,33 @@ class EndpointTest: XCTestCase {
         super.tearDown()
     }
     /*
-    func testWeb3Endpoints() throws {
-        try endpoint(for: .clientVersion)
-        try endpoint(for: .sha3("0x68656c6c6f20776f726c64"))
-    }
+    // web3 calls
+    func testClientVersion() throws { try endpoint(for: .clientVersion) }
+    func testSha3() throws { try endpoint(for: .sha3("0x68656c6c6f20776f726c64")) }
     
-    func testNetEndpoints() throws {
-        try endpoint(for: .networkID)
-        try endpoint(for: .peerCount)
-        try endpoint(for: .listening)        
-    }
+    // Net calls
+    func testNetworkdID() throws { try endpoint(for: .networkID) }
+    func testPeerCount() throws { try endpoint(for: .peerCount) }
+    func testListening() throws { try endpoint(for: .listening) }
     
-    func testEthEndpoints() throws {
-        try endpoint(for: .protocolVersion)
-        try endpoint(for: .isSyncing)
-        try endpoint(for: .coinbase)
-        try endpoint(for: .isMining)
-        try endpoint(for: .hashrate)
-        try endpoint(for: .gasPrice)
-        try endpoint(for: .accounts)
-        try endpoint(for: .blockNumber)
-//        try endpoint(for: .balance())
-        
+    // Ethereum calls
+    func testProtocolVersion() throws { try endpoint(for: .protocolVersion) }
+    func testIsSyncing() throws { try endpoint(for: .isSyncing) }
+    func testCoinbase() throws { try endpoint(for: .coinbase) }
+    func testIsMining() throws { try endpoint(for: .isMining) }
+    func testHashrate() throws { try endpoint(for: .hashrate) }
+    func testGasPrice() throws { try endpoint(for: .gasPrice) }
+    func testAccounts() throws { try endpoint(for: .accounts) }
+    func testBlockNumber() throws { try endpoint(for: .blockNumber) }
+    func testBalance() throws { try endpoint(for: .balance(Address(hex: "0x407d73d8a49eeb85d32cf465507dd71d507100c1")!, .latest)) }
+    
+    func testTransactionCount() throws { try endpoint(for: .transactionCount(Address(hex: "0x407d73d8a49eeb85d32cf465507dd71d507100c1")!, .latest)) }
+    func testBlockTransactionCount() throws { try endpoint(for: .blockTransactionCount(BlockHash(hex: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238")!)) }
+    */
+    
+    /*
         /*
-        case .transactionCount(_, _): return """
-        {"id":1,"jsonrpc":"2.0","result":"0x1"}
-        """
+        
         case .blockTransactionCount(_): return """
         {"id":1,"jsonrpc":"2.0","result":"0xb"}
         """
@@ -149,21 +150,43 @@ class EndpointTest: XCTestCase {
     }
     */
     
-    // SSH
-    func testSshPost() throws { try endpoint(for: .sshPost) }
+    // SSH Tests
+    /*
+    func testSshPost() throws {
+        print("04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1".count)
+        let to = WhisperAddress(hex: "0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1")
+        XCTAssertNotNil(to)
+        let from = WhisperAddress(hex: "0x3e245533f97284d442460f2998cd41858798ddf04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a0d4d661997d3940272b717b1")
+        XCTAssertNotNil(from)
+        let topic1 = Hash(hex: "0x776869737065722d636861742d636c69656e74")
+        XCTAssertNotNil(topic1)
+        let topic2 = Hash(hex: "0x4d5a695276454c39425154466b61693532")
+        XCTAssertNotNil(topic2)
+        let payload = Hash(hex: "0x7b2274797065223a226d6")
+        XCTAssertNotNil(payload)
+        
+        let post = WhisperPost(from: to!,
+                               to: from!,
+                               topics: [topic1!, topic2!],
+                               payload: payload!,
+                               priority: 100,
+                               ttl: 100)
+        try endpoint(for: .sshPost(post))
+    } */            
+    /*
     func testSshVersion() throws { try endpoint(for: .sshVersion) }
     func testSshNewIdentity() throws { try endpoint(for: .sshNewIdentity) }
     func testSshHasIdentity() throws { try endpoint(for: .sshHasIdentity) }
     func testSshNewGroup() throws { try endpoint(for: .sshNewGroup) }
     func testSshAddToGroup() throws { try endpoint(for: .sshAddToGroup) }
     func testSshNewFilter() throws { try endpoint(for: .sshNewFilter) }
-    func testSshUninstallFilter() throws { try endpoint(for: .sshUninstallFilter) }
+    func testSshUninstallFilter() throws { try endpoint(for: .sshUninstallFilter(7)) }
     func testSshGetFilterChanges() throws { try endpoint(for: .sshGetFilterChanges) }
     func testSshGetMessages() throws { try endpoint(for: .sshGetMessages) }
-    
+    */
     
     // test if error in a parameter dictionary is detected
-    func testValidity() throws {
+    func testSanity() throws {
         
         let invalidParameterString = """
         {"jsonrpc":"2.0","method":"web3_invalidMethod","params":[],"id":67}
@@ -184,7 +207,7 @@ class EndpointTest: XCTestCase {
         let valid = try JSONDecoder().decode(Parameter.self, from: validParameterString.data(using: .utf8)!)
         
         let resource = Resource<Web3Result<String>>(server: server, method: .clientVersion)
-        guard let urlRequest = URLRequest(resource: resource) else { throw UnexpectedNilError() }
+        let urlRequest = try URLRequest(resource: resource)
         
         // Decode body parameters and expected body parameters as Parameter struct so we can compare both
         guard let bodyData = urlRequest.httpBody else { throw UnexpectedNilError() }
@@ -198,10 +221,11 @@ class EndpointTest: XCTestCase {
     
     func endpoint(for method: NetworkMethod) throws {
         let resource = Resource<Web3Result<String>>(server: server, method: method)
-        guard let urlRequest = URLRequest(resource: resource) else { throw UnexpectedNilError() }
+        let urlRequest = try URLRequest(resource: resource)
         
         // Decode body parameters and expected body parameters as Parameter struct so we can compare both
         guard let bodyData = urlRequest.httpBody else { throw UnexpectedNilError() }
+        print(String(data:bodyData, encoding: .utf8)!)
         let body = try JSONDecoder().decode(Parameter.self, from: bodyData)
         
         guard let expectedData = method.expectedBody.data(using: .utf8) else { throw UnexpectedNilError() }
@@ -209,7 +233,9 @@ class EndpointTest: XCTestCase {
         
         XCTAssertEqual(urlRequest.httpMethod, method.expectedHttpMethod, "httpMethod for \(String(describing: method)) is \(urlRequest.httpMethod ?? "nil")")
         XCTAssertEqual(urlRequest.url, URL(string: "http://localhost:8545"), "url for \(String(describing: method)) is \(String(describing: urlRequest.url))")
-        XCTAssertEqual(body, expectedBody, "body for \(String(describing: method)) is \(body)). Expected: \(method.expectedBody)")
+        let delta = body ∆ expectedBody
+        XCTAssertNil(delta)
+        XCTAssertEqual(body, expectedBody, "\(delta ?? "")")
     }
 }
 

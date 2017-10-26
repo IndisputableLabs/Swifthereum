@@ -19,3 +19,16 @@ extension Int64 {
         self = int
     }
 }
+
+extension Int {
+    public var hexValue: String {
+        return "0x" + String(format:"%02X", self)
+    }
+    
+    public init?(hex: String) {
+        var hex = hex
+        hex = hex.remove0xPrefix()
+        guard let int = Int(hex, radix: 16) else { return nil }
+        self = int
+    }
+}
