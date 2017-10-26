@@ -240,7 +240,7 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getblocktransactioncountbynumber
      */
-    public func blockTransactionCount(by number: Int64, completion: @escaping (Result<String>) -> ()) throws {
+    public func blockTransactionCount(by number: DefaultBlock, completion: @escaping (Result<String>) -> ()) throws {
         try fetch(method: .blockTransactionCountByNumber(number)) { (result: Result<String>) in
             completion(result)
         }

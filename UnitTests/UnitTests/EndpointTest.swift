@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 import Swifthereum
+import BigInt
 @testable import Unit
 
 
@@ -29,7 +30,7 @@ class EndpointTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    /*
+    
     // web3 calls
     func testClientVersion() throws { try endpoint(for: .clientVersion) }
     func testSha3() throws { try endpoint(for: .sha3("0x68656c6c6f20776f726c64")) }
@@ -52,14 +53,19 @@ class EndpointTest: XCTestCase {
     
     func testTransactionCount() throws { try endpoint(for: .transactionCount(Address(hex: "0x407d73d8a49eeb85d32cf465507dd71d507100c1")!, .latest)) }
     func testBlockTransactionCount() throws { try endpoint(for: .blockTransactionCount(BlockHash(hex: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238")!)) }
-    */
+    func testBlockTransactionCountByNumber() throws {
+        try endpoint(for: .blockTransactionCountByNumber(.number(232)))
+    }
+    
+//    func testBlockTransactionCountByNumber2() throws {
+//        try endpoint(for: .blockTransactionCountByNumber(.defaultBlock(.)
+//            number(BigInt(232))))
+//    }
     
     /*
         /*
         
-        case .blockTransactionCount(_): return """
-        {"id":1,"jsonrpc":"2.0","result":"0xb"}
-        """
+     
         case .blockTransactionCountByNumber(_): return """
         {"id":1,"jsonrpc":"2.0","result":"0xa"}
         """
@@ -173,10 +179,10 @@ class EndpointTest: XCTestCase {
                                ttl: 100)
         try endpoint(for: .sshPost(post))
     } */            
-    /*
+    
     func testSshVersion() throws { try endpoint(for: .sshVersion) }
     func testSshNewIdentity() throws { try endpoint(for: .sshNewIdentity) }
-    func testSshHasIdentity() throws { try endpoint(for: .sshHasIdentity) }
+    /*func testSshHasIdentity() throws { try endpoint(for: .sshHasIdentity) }
     func testSshNewGroup() throws { try endpoint(for: .sshNewGroup) }
     func testSshAddToGroup() throws { try endpoint(for: .sshAddToGroup) }
     func testSshNewFilter() throws { try endpoint(for: .sshNewFilter) }
@@ -184,7 +190,6 @@ class EndpointTest: XCTestCase {
     func testSshGetFilterChanges() throws { try endpoint(for: .sshGetFilterChanges) }
     func testSshGetMessages() throws { try endpoint(for: .sshGetMessages) }
     */
-    
     // test if error in a parameter dictionary is detected
     func testSanity() throws {
         
@@ -238,11 +243,3 @@ class EndpointTest: XCTestCase {
         XCTAssertEqual(body, expectedBody, "\(delta ?? "")")
     }
 }
-
-
-
-
-
-
-
-

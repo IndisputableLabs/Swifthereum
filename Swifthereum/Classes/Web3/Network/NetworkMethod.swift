@@ -34,7 +34,7 @@ public enum NetworkMethod {
 //    case storage(Address, DefaultBlock)
     case transactionCount(Address, DefaultBlock)
     case blockTransactionCount(BlockHash)
-    case blockTransactionCountByNumber(Int64)
+    case blockTransactionCountByNumber(DefaultBlock)
     case uncleCount(BlockHash)
     case uncleCountByBlockNumber(Int64)
     case code(Address, DefaultBlock)
@@ -155,6 +155,8 @@ extension NetworkMethod {
 }
 
 extension NetworkMethod {
+    
+    /// TODO: can we return a single Encodable instead of an array and have URLRequest encode the data and wrap it in an array?
     public var parameters: [Encodable?] {
         switch self {
         case .sha3(let string):
@@ -167,8 +169,12 @@ extension NetworkMethod {
             return [String(describing: address), defaultBlock.value]
         case .blockTransactionCount(let blockHash):
             return [String(describing: blockHash)]
-        case .blockTransactionCountByNumber(let number):
-            return ["\(number)"]
+        case .blockTransactionCountByNumber(let defaultBlock):
+//            let encoder = JSONEncoder()
+//            let encodedParameters = try! encoder.encode(defaultBlock)
+//            return [encodedParameters]
+            return [defaultBlock.value]
+            
         case .uncleCount(let blockHash):
             return [String(describing: blockHash)]
         case .uncleCountByBlockNumber(let number):

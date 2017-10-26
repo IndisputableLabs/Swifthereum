@@ -11,28 +11,33 @@ import BigInt
 /**
  Wrapper for BigInt to encode / decode Ethereum hexStrings
  */
-public struct BigIntWrapper: Decodable {
+public struct BigIntWrapper {
     public let bigInt: BigInt
     
+    public init?(_ stringValue: String) {
+        let radix: Int = stringValue.isValidHex() ? 16 : 10
+
+        guard let bigInt = BigInt(stringValue.remove0xPrefix(), radix: radix) else { return nil }
+        self.bigInt = bigInt
+    }
+}
+
+extension BigIntWrapper: Codable {
+    
     public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let stringValue = try container.decode(String.self)
         
-        // If big int is unkeyed
-        let container = try decoder.singleValueContainer()  // unkeyedContainer() // could be in result or a value
-        var bigIntString = try container.decode(String.self)
+        let radix: Int = stringValue.isValidHex() ? 16 : 10
         
-        if bigIntString.hasPrefix("0x") {
-            bigIntString = String(bigIntString.dropFirst(2))
-            guard let bigInt = BigInt(bigIntString, radix: 16) else {
-                throw DecodingError.dataCorrupted(.init(codingPath: container.codingPath,
-                                                        debugDescription: "Invalid hexadecimal string"))
-            }
-            self.bigInt = bigInt
-        } else {
-            guard let bigInt = BigInt(bigIntString) else {
-                throw DecodingError.dataCorrupted(.init(codingPath: container.codingPath,
-                                                        debugDescription: "Invalid decimal string"))
-            }
-            self.bigInt = bigInt
+        guard let bigInt = BigInt(stringValue.remove0xPrefix(), radix: radix) else {
+            throw DecodingError.dataCorrupted(.init(codingPath: container.codingPath, debugDescription: "Invalid hexadecimal string"))
         }
+        self.bigInt = bigInt
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(bigInt.hex)
     }
 }

@@ -34,4 +34,8 @@ public extension BigInt {
         
         return quotient + remainder
     }
+    
+    public var hex: String {
+        return "0x" + String(self, radix: 16, uppercase: true)
+    }
 }

@@ -72,7 +72,7 @@ extension String {
      - example: `"0ffbF245095dB".hexString` will return ""
      */
     public var hexString: String {
-        return unicodeScalars.filter { $0.isASCII }.map { String(format: "%02X : ", $0.value) }.joined()
+        return unicodeScalars.filter { $0.isASCII }.map { String(format: "%02x : ", $0.value) }.joined()
     }
     
 }

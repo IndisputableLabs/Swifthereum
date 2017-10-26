@@ -9,7 +9,7 @@ import Foundation
 
 extension Int64 {
     public var hexValue: String {
-        return "0x" + String(format:"%02X", self)
+        return "0x" + String(format:"%02x", self)
     }
     
     public init?(hex: String) {
@@ -22,7 +22,7 @@ extension Int64 {
 
 extension Int {
     public var hexValue: String {
-        return "0x" + String(format:"%02X", self)
+        return "0x" + String(format:"%02x", self)
     }
     
     public init?(hex: String) {

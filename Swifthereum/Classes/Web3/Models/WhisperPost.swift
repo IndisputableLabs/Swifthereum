@@ -37,9 +37,6 @@ extension WhisperPost: Encodable {
     }
     
     public func encode(to encoder: Encoder) throws {
-        
-//        var container = encoder.unkeyedContainer()
-        
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(String(describing: from), forKey: .from)
         try container.encode(String(describing: to), forKey: .to)
