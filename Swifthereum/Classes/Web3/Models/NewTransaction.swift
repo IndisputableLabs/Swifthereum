@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BigInt
 
 /**
  
@@ -25,11 +26,48 @@ public struct NewTransaction {
     public let to: Address
     public let gas: Wei?
     public let gasPrice: Wei?
-    public let value: HashString?
-    public let data: String?
+    public let value: BigInt?
+    public let data: Hash?
     public let nonce: Int?
-}
 
-//extension NewTransaction: Codable {
-//}
+    public init(from: Address? = nil, to: Address, gas: Wei? = nil, gasPrice: Wei? = nil, value: BigInt? = nil, data: Hash? = nil, nonce: Int? = nil) {
+        self.from = from
+        self.to = to
+        self.gas = gas
+        self.gasPrice = gasPrice
+        self.value = value
+        self.data = data
+        self.nonce = nonce
+    }
+    
+}
+extension NewTransaction: Encodable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case from, to, gas, gasPrice, value, data, nonce
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        if let from = from {
+            try container.encode(String(describing:from), forKey: .from)
+        }
+        try container.encode(String(describing: to), forKey: .to)
+        if let gas = gas {
+            try container.encode("0x" + String(gas, radix: 16), forKey: .gas)
+        }
+        if let gasPrice = gasPrice {
+            try container.encode("0x" + String(gasPrice, radix: 16), forKey: .gasPrice)
+        }
+        if let value = value {
+            try container.encode("0x" + String(value, radix: 16), forKey: .value)
+        }
+        if let data = data {
+            try container.encode("0x" + String(describing: data), forKey: .data)
+        }
+        if let nonce = nonce {
+            try container.encode("0x" + nonce.hexValue, forKey: .nonce)
+        }
+    }
+}
 

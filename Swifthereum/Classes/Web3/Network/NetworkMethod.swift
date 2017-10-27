@@ -36,9 +36,9 @@ public enum NetworkMethod {
     case blockTransactionCount(BlockHash)
     case blockTransactionCountByNumber(DefaultBlock)
     case uncleCount(BlockHash)
-    case uncleCountByBlockNumber(Int64)
+    case uncleCountByBlockNumber(DefaultBlock)
     case code(Address, DefaultBlock)
-    case sign(Address, String)
+    case sign(Address, Hash)
     case sendTransaction(NewTransaction)
     case sendRawTransaction(TransactionHash)
     case call(NewTransaction)
@@ -173,21 +173,23 @@ extension NetworkMethod {
 //            let encoder = JSONEncoder()
 //            let encodedParameters = try! encoder.encode(defaultBlock)
 //            return [encodedParameters]
-            return [defaultBlock.value]
-            
+            return [defaultBlock.value]            
         case .uncleCount(let blockHash):
             return [String(describing: blockHash)]
-        case .uncleCountByBlockNumber(let number):
-            return ["\(number)"]
-//        case .code(let address, let defaultBlock):
-//            return
+        case .uncleCountByBlockNumber(let defaultBlock):
+            return [defaultBlock.value]
+        case .code(let address, let defaultBlock):
+            return [String(describing: address), defaultBlock.value]
+        case .sign(let address, let message):
+            return [String(describing: address), String(describing: message)]
+        case .sendTransaction(let transaction):
+            let encoder = JSONEncoder()
+            guard let data = try? encoder.encode(transaction), let string = String(data: data, encoding: .utf8) else {
+                fatalError() // fix
+            }
             
-            
-            
-            
-//        case .sendTransaction(let transaction):
-//            let encoder = JSONEncoder()
-//            return try? encoder.encode(transaction)
+            print(string)
+            return [string]
         case .transaction(let hash):
             return [String(describing: hash)]
         case .sshPost(let post):
@@ -205,8 +207,6 @@ extension NetworkMethod {
 }
 
 /*
-case code(Address, DefaultBlock)
-case sign(Address, String)
 case sendTransaction(NewTransaction)
 case sendRawTransaction(TransactionHash)
 case call(NewTransaction)

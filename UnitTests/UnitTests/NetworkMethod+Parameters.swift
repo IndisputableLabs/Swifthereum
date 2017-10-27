@@ -96,20 +96,65 @@ extension NetworkMethod {
         case .uncleCount(_): return """
             {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}
             """
-        case .uncleCountByBlockNumber(_): return """
-            {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["0xe8"],"id":1}
-            """
-        case .code(_, _): return """
-            {"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x2"],"id":1}
-            """
+        case .uncleCountByBlockNumber(let defaultBlock):
+            switch defaultBlock {
+            case .number(_):
+                return """
+                {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["0xe8"],"id":1}
+                """
+            case .earliest:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["earliest"],"id":1}
+                """
+            case .genesis:
+                // genesis is not listed as a valid parameter in the documentation
+                return """
+                {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["genesis"],"id":1}
+                """
+            case .latest:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["latest"],"id":1}
+                """
+            case .pending:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["pending"],"id":1}
+                """
+            }
+        case .code(_, let defaultBlock):
+            switch defaultBlock {
+            case .number(_):
+                // documentation states correct value is 0x2, instead of 0x02
+                return """
+                {"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x02"],"id":1}
+                """
+            case .earliest:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "earliest"],"id":1}
+                """
+            case .genesis:
+                // genesis is not listed as a valid parameter in the documentation
+                return """
+                {"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "genesis"],"id":1}
+                """
+            case .latest:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "latest"],"id":1}
+                """
+            case .pending:
+                return """
+                {"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "pending"],"id":1}
+                """
+            }
         case .sign(_, _): return """
             {"jsonrpc":"2.0","method":"eth_sign","params":["0x9b2055d370f73ec7d8a03e965129118dc8f5bf83", "0xdeadbeaf"],"id":1}
             """
-        case .sendTransaction(_): return """
-            {"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{see above}],"id":1}
+        case .sendTransaction(_):
+            print("hello")
+            return """
+            {"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"}],"id":1}
             """
         case .sendRawTransaction(_): return """
-            {"jsonrpc":"2.0","method":"eth_sendRawTransaction","params":[{see above}],"id":1}
+            {"jsonrpc":"2.0","method":"eth_sendRawTransaction","params":["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1}
             """
         case .call(_): return """
             {"jsonrpc":"2.0","method":"eth_call","params":[{see above}],"id":1}

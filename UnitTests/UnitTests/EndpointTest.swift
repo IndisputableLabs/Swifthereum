@@ -34,12 +34,12 @@ class EndpointTest: XCTestCase {
     // web3 calls
     func testClientVersion() throws { try endpoint(for: .clientVersion) }
     func testSha3() throws { try endpoint(for: .sha3("0x68656c6c6f20776f726c64")) }
-    
+
     // Net calls
     func testNetworkdID() throws { try endpoint(for: .networkID) }
     func testPeerCount() throws { try endpoint(for: .peerCount) }
     func testListening() throws { try endpoint(for: .listening) }
-    
+
     // Ethereum calls
     func testProtocolVersion() throws { try endpoint(for: .protocolVersion) }
     func testIsSyncing() throws { try endpoint(for: .isSyncing) }
@@ -50,29 +50,37 @@ class EndpointTest: XCTestCase {
     func testAccounts() throws { try endpoint(for: .accounts) }
     func testBlockNumber() throws { try endpoint(for: .blockNumber) }
     func testBalance() throws { try endpoint(for: .balance(Address(hex: "0x407d73d8a49eeb85d32cf465507dd71d507100c1")!, .latest)) }
-    
+
     func testTransactionCount() throws { try endpoint(for: .transactionCount(Address(hex: "0x407d73d8a49eeb85d32cf465507dd71d507100c1")!, .latest)) }
     func testBlockTransactionCount() throws { try endpoint(for: .blockTransactionCount(BlockHash(hex: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238")!)) }
-    func testBlockTransactionCountByNumber() throws { try endpoint(for: .blockTransactionCountByNumber(.number(232))) }
+    func testBlockTransactionCountByNumber1() throws { try endpoint(for: .blockTransactionCountByNumber(.number(232))) }
     func testBlockTransactionCountByNumber2() throws { try endpoint(for: .blockTransactionCountByNumber(.earliest)) }
     func testBlockTransactionCountByNumber3() throws { try endpoint(for: .blockTransactionCountByNumber(.latest)) }
     func testBlockTransactionCountByNumber4() throws { try endpoint(for: .blockTransactionCountByNumber(.pending)) }
     func testBlockTransactionCountByNumber5() throws { try endpoint(for: .blockTransactionCountByNumber(.genesis)) }
+
+    func testUncleCount() throws { try endpoint(for: .uncleCount(BlockHash(hex: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238")!)) }
+    func testUncleCountByBlockNumber1() throws { try endpoint(for: .uncleCountByBlockNumber(.number(232))) }
+    func testUncleCountByBlockNumber2() throws { try endpoint(for: .uncleCountByBlockNumber(.earliest)) }
+    func testUncleCountByBlockNumber3() throws { try endpoint(for: .uncleCountByBlockNumber(.latest)) }
+    func testUncleCountByBlockNumber4() throws { try endpoint(for: .uncleCountByBlockNumber(.pending)) }
+    func testUncleCountByBlockNumber5() throws { try endpoint(for: .uncleCountByBlockNumber(.genesis)) }
+
+    func testCode1() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .number(2))) }
+    func testCode2() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .earliest)) }
+    func testCode3() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .latest)) }
+    func testCode4() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .pending)) }
+    func testCode5() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .genesis)) }
+
+    func testSign() throws { try endpoint(for: .sign(Address(hex: "0x9b2055d370f73ec7d8a03e965129118dc8f5bf83")!, Hash(hex: "0xdeadbeaf")!))}
+//    func testSendTransaction() throws {
+//        let transaction = NewTransaction(from: Address(hex: "0xb60e8dd61c5d32be8058bb8eb970870f07233155")!, to: Address(hex: "0xd46e8dd67c5d32be8058bb8eb970870f07244567")!, gas: 30400, gasPrice: 10000000000000, value: 2441406250, data: Hash(hex: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"))
+//        try endpoint(for: .sendTransaction(transaction))
+//    }
+    
     
     /*
         /*
-        case .uncleCount(_): return """
-        {"id":1,"jsonrpc":"2.0","result":"0x1"}
-        """
-        case .uncleCountByBlockNumber(_): return """
-        {"id":1,"jsonrpc":"2.0","result":"0x1"}
-        """
-        case .code(_, _): return """
-        {"id":1,"jsonrpc":"2.0","result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"}
-        """
-        case .sign(_, _): return """
-        {"id":1,"jsonrpc":"2.0","result": "0xa3f20717a250c2b0b729b7e5becbff67fdaef7e0699da4de7ca5895b02a170a12d887fd3b17bfdce3481f10bea41f45ba9f709d39ce8325427b57afcfc994cee1b"}
-        """
         case .sendTransaction(_): return """
         {"id":1,"jsonrpc":"2.0","result":"0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"}
         """

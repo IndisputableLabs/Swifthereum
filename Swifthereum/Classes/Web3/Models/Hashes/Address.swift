@@ -21,7 +21,7 @@ public struct Address: HashProtocol {
 }
 
 // Codable
-extension Address {
+extension Address: Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -30,6 +30,11 @@ extension Address {
             throw DecodingError.dataCorruptedError(in: container, debugDescription: "\(stringValue) is not a valid address")
         }
         self.hash = hash
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = try encoder.singleValueContainer()
+        try container.encode(String(describing: hash))
     }
 }
 

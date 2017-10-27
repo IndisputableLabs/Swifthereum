@@ -258,7 +258,7 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getunclecountbyblocknumber
      */
-    public func uncleCount(by blockNumber: Int64, completion: @escaping (Result<String>) -> ()) throws {
+    public func uncleCount(by blockNumber: DefaultBlock, completion: @escaping (Result<String>) -> ()) throws {
         try fetch(method: .uncleCountByBlockNumber(blockNumber)) { (result: Result<String>) in
             completion(result)
         }
@@ -276,7 +276,7 @@ extension Swifthereum {
     /**
      https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign
      */
-    public func sign(address: Address, message: String, completion: @escaping (Result<String>) -> ()) throws {
+    public func sign(address: Address, message: Hash, completion: @escaping (Result<String>) -> ()) throws {
         try fetch(method: .sign(address, message)) { (result: Result<String>) in
             completion(result)
         }
