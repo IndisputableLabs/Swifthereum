@@ -61,7 +61,7 @@ pod 'Geth'
 
 ## Usage
 
-### Basics (Depricated)
+### Basics (Deprecated)
 
 Start an Ethereum node as part of the main network and synchronize with the Ethereum network:
 
