@@ -41,7 +41,7 @@ public struct NewTransaction {
     }
     
 }
-extension NewTransaction: Encodable {
+extension NewTransaction: Codable {
     
     private enum CodingKeys: String, CodingKey {
         case from, to, gas, gasPrice, value, data, nonce
@@ -49,25 +49,36 @@ extension NewTransaction: Encodable {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        if let from = from {
-            try container.encode(String(describing:from), forKey: .from)
-        }
+        if let from = from { try container.encode(String(describing:from), forKey: .from) }
         try container.encode(String(describing: to), forKey: .to)
-        if let gas = gas {
-            try container.encode("0x" + String(gas, radix: 16), forKey: .gas)
-        }
-        if let gasPrice = gasPrice {
-            try container.encode("0x" + String(gasPrice, radix: 16), forKey: .gasPrice)
-        }
-        if let value = value {
-            try container.encode("0x" + String(value, radix: 16), forKey: .value)
-        }
-        if let data = data {
-            try container.encode("0x" + String(describing: data), forKey: .data)
-        }
-        if let nonce = nonce {
-            try container.encode("0x" + nonce.hexValue, forKey: .nonce)
-        }
+        if let gas = gas { try container.encode("0x" + String(gas, radix: 16), forKey: .gas) }
+        if let gasPrice = gasPrice { try container.encode("0x" + String(gasPrice, radix: 16), forKey: .gasPrice) }
+        if let value = value { try container.encode("0x" + String(value, radix: 16), forKey: .value) }
+        if let data = data { try container.encode("0x" + String(describing: data), forKey: .data) }
+        if let nonce = nonce { try container.encode("0x" + nonce.hexValue, forKey: .nonce) }
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let from = try container.decodeIfPresent(Address.self, forKey: .from)
+        let to = try container.decode(Address.self, forKey: .to)
+        let gas = try container.decodeIfPresent(Wei.self, forKey: .gas)
+        let gasPrice = try container.decodeIfPresent(Wei.self, forKey: .gasPrice)
+        let value = try container.decodeIfPresent(BigIntWrapper.self, forKey: .value)
+        let data = try container.decodeIfPresent(Hash.self, forKey: .data)
+        let nonce = try container.decodeIfPresent(Int.self, forKey: .nonce)
+        
+        self.init(from: from, to: to, gas: gas, gasPrice: gasPrice, value: value?.bigInt, data: data, nonce: nonce)
+
+//        let stringValue = try container.decode(String.self)
+        ////            let points = try productContainer.decode(Int.self, forKey: .points)
+        ////            let description = try productContainer.decodeIfPresent(String.self, forKey: .description)
+        ////
+        ////            // The key is used again here and completes the collapse of the nesting that existed in the JSON representation.
+        ////            let product = Product(name: key.stringValue, points: points, description: description)
+        ////            products.append(product)
+
     }
 }
 

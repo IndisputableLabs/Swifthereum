@@ -73,10 +73,10 @@ class EndpointTest: XCTestCase {
     func testCode5() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .genesis)) }
 
     func testSign() throws { try endpoint(for: .sign(Address(hex: "0x9b2055d370f73ec7d8a03e965129118dc8f5bf83")!, Hash(hex: "0xdeadbeaf")!))}
-//    func testSendTransaction() throws {
-//        let transaction = NewTransaction(from: Address(hex: "0xb60e8dd61c5d32be8058bb8eb970870f07233155")!, to: Address(hex: "0xd46e8dd67c5d32be8058bb8eb970870f07244567")!, gas: 30400, gasPrice: 10000000000000, value: 2441406250, data: Hash(hex: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"))
-//        try endpoint(for: .sendTransaction(transaction))
-//    }
+    func testSendTransaction() throws {
+        let transaction = NewTransaction(from: Address(hex: "0xb60e8dd61c5d32be8058bb8eb970870f07233155")!, to: Address(hex: "0xd46e8dd67c5d32be8058bb8eb970870f07244567")!, gas: 30400, gasPrice: 10000000000000, value: 2441406250, data: Hash(hex: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"))
+        try endpoint(for: .sendTransaction(transaction))
+    }
     
     
     /*
@@ -193,33 +193,41 @@ class EndpointTest: XCTestCase {
     // test if error in a parameter dictionary is detected
     func testSanity() throws {
         
+        // Invalid method
         let invalidParameterString = """
         {"jsonrpc":"2.0","method":"web3_invalidMethod","params":[],"id":67}
         """
-        let invalidParameterString2 = """
-        {"jsonrpc":"3.0","method":"web3_clientVersion","params":[],"id":67}
-        """
+        
+        // Invalid json rpc version
+        // version is always set to 2.0 No need to test
+//        let invalidParameterString2 = """
+//        {"jsonrpc":"3.0","method":"web3_clientVersion","params":[],"id":67}
+//        """
+        
+        // Invalid parameter
         let invalidParameterString3 = """
         {"jsonrpc":"2.0","method":"web3_clientVersion","params":["invalidParameter"],"id":67}
-        """        
+        """
+        
+        // Expected JSON
         let validParameterString = """
         {"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":2}
         """
         
-        let invalid1 = try JSONDecoder().decode(Parameter.self, from: invalidParameterString.data(using: .utf8)!)
-        let invalid2 = try JSONDecoder().decode(Parameter.self, from: invalidParameterString2.data(using: .utf8)!)
-        let invalid3 = try JSONDecoder().decode(Parameter.self, from: invalidParameterString3.data(using: .utf8)!)
-        let valid = try JSONDecoder().decode(Parameter.self, from: validParameterString.data(using: .utf8)!)
+        let invalid1 = try JSONDecoder().decode(Rpc.self, from: invalidParameterString.data(using: .utf8)!)
+//        let invalid2 = try JSONDecoder().decode(Rpc.self, from: invalidParameterString2.data(using: .utf8)!)
+        let invalid3 = try JSONDecoder().decode(Rpc.self, from: invalidParameterString3.data(using: .utf8)!)
+        let valid = try JSONDecoder().decode(Rpc.self, from: validParameterString.data(using: .utf8)!)
         
         let resource = Resource<Web3Result<String>>(server: server, method: .clientVersion)
         let urlRequest = try URLRequest(resource: resource)
         
         // Decode body parameters and expected body parameters as Parameter struct so we can compare both
         guard let bodyData = urlRequest.httpBody else { throw UnexpectedNilError() }
-        let body = try JSONDecoder().decode(Parameter.self, from: bodyData)
+        let body = try JSONDecoder().decode(Rpc.self, from: bodyData)
         
         XCTAssertNotEqual(invalid1, body, "1: \(invalid1) is equal to \(body)")
-        XCTAssertNotEqual(invalid2, body, "2: \(invalid2) is equal to \(body)")
+//        XCTAssertNotEqual(invalid2, body, "2: \(invalid2) is equal to \(body)")
         XCTAssertNotEqual(invalid3, body, "3: \(invalid3) is equal to \(body)")
         XCTAssertEqual(valid, body, "4: \(valid) is not equal to \(body)")
     }
@@ -231,15 +239,15 @@ class EndpointTest: XCTestCase {
         // Decode body parameters and expected body parameters as Parameter struct so we can compare both
         guard let bodyData = urlRequest.httpBody else { throw UnexpectedNilError() }
         print(String(data:bodyData, encoding: .utf8)!)
-        let body = try JSONDecoder().decode(Parameter.self, from: bodyData)
+        let body = try JSONDecoder().decode(Rpc.self, from: bodyData)
         
         guard let expectedData = method.expectedBody.data(using: .utf8) else { throw UnexpectedNilError() }
-        let expectedBody = try JSONDecoder().decode(Parameter.self, from: expectedData)
+        let expectedBody = try JSONDecoder().decode(Rpc.self, from: expectedData) // Parameter.self is the issue. Is it because Parameter is expecting [String]? instead of a dictionary? Changing it to Any -> Any is not conform codable. Perhaps changing it to JSONDictionary? Or enum?
         
-        XCTAssertEqual(urlRequest.httpMethod, method.expectedHttpMethod, "httpMethod for \(String(describing: method)) is \(urlRequest.httpMethod ?? "nil")")
-        XCTAssertEqual(urlRequest.url, URL(string: "http://localhost:8545"), "url for \(String(describing: method)) is \(String(describing: urlRequest.url))")
+        XCTAssertEqual(urlRequest.httpMethod, method.expectedHttpMethod, "Failed: httpMethod for \(String(describing: method)) is \(urlRequest.httpMethod ?? "nil")")
+        XCTAssertEqual(urlRequest.url, URL(string: "http://localhost:8545"), "Failed: url for \(String(describing: method)) is \(String(describing: urlRequest.url))")
         let delta = body ∆ expectedBody
-        XCTAssertNil(delta)
-        XCTAssertEqual(body, expectedBody, "\(delta ?? "")")
+        XCTAssertNil(delta, "Failed: delta is not nil")
+        XCTAssertEqual(body, expectedBody, "Failed: body and expectedBody are not equel. Delta: \(delta ?? "")")
     }
 }

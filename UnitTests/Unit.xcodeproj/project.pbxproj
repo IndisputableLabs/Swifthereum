@@ -16,7 +16,6 @@
 		5225C59A1FA000FA00E2BC9F /* EndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5225C5991FA000FA00E2BC9F /* EndpointTest.swift */; };
 		5225C59C1FA0418E00E2BC9F /* NetworkMethod+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5225C59B1FA0418E00E2BC9F /* NetworkMethod+Parameters.swift */; };
 		5225C59E1FA045E700E2BC9F /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5225C59D1FA045E700E2BC9F /* EnumCollection.swift */; };
-		5225C5A01FA04E4B00E2BC9F /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5225C59F1FA04E4B00E2BC9F /* Parameter.swift */; };
 		72B130970A4515BCCC1E79B9 /* Pods_Unit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD2985BF9DA0252C7A75767 /* Pods_Unit.framework */; };
 		7E05429076054EEBCCC3F71E /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4649893D414D469181AD7 /* Pods_UnitTests.framework */; };
 /* End PBXBuildFile section */
@@ -47,7 +46,6 @@
 		5225C5991FA000FA00E2BC9F /* EndpointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTest.swift; sourceTree = "<group>"; };
 		5225C59B1FA0418E00E2BC9F /* NetworkMethod+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkMethod+Parameters.swift"; sourceTree = "<group>"; };
 		5225C59D1FA045E700E2BC9F /* EnumCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
-		5225C59F1FA04E4B00E2BC9F /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		8CD2985BF9DA0252C7A75767 /* Pods_Unit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37E0D3D96ECF76BBD1BF24F /* Pods-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		D90BEC767C0FE8A519BA7819 /* Pods-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				5225C5881F9EE42600E2BC9F /* UnitTests.swift */,
 				5225C5951F9F014E00E2BC9F /* ModelsTest.swift */,
 				5225C5991FA000FA00E2BC9F /* EndpointTest.swift */,
-				5225C59F1FA04E4B00E2BC9F /* Parameter.swift */,
 				5225C5931F9EE55B00E2BC9F /* NetworkMethod+UnitTests.swift */,
 				5225C59B1FA0418E00E2BC9F /* NetworkMethod+Parameters.swift */,
 				5225C58A1F9EE42600E2BC9F /* Info.plist */,
@@ -369,7 +366,6 @@
 				5225C59E1FA045E700E2BC9F /* EnumCollection.swift in Sources */,
 				5225C59A1FA000FA00E2BC9F /* EndpointTest.swift in Sources */,
 				5225C5961F9F014E00E2BC9F /* ModelsTest.swift in Sources */,
-				5225C5A01FA04E4B00E2BC9F /* Parameter.swift in Sources */,
 				5225C59C1FA0418E00E2BC9F /* NetworkMethod+Parameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
