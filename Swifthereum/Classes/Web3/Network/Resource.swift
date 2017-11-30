@@ -37,9 +37,8 @@ public enum ParameterEncoding {
 public struct Resource<A: Decodable> {
     
     public let server: Server
-    public let method: String               // E.g. "eth_sign"
     public let headers: JSONDictionary?
-    public let parameters: Encodable?             // E.g. ["0x9b2055d370f73ec7d8a03e965129118dc8f5bf83", "0xdeadbeaf"]
+    public let parameters: JSONDictionary?
     public let httpMethod: HttpMethod
     public let encoding: ParameterEncoding
     /**
@@ -50,9 +49,8 @@ public struct Resource<A: Decodable> {
 
 extension Resource {
     
-    public init(server: Server, method: String, parameters: Encodable? = nil, headers: JSONDictionary? = nil, httpMethod: HttpMethod = .post, encoding: ParameterEncoding = .json) {
+    public init(server: Server, parameters: JSONDictionary? = nil, headers: JSONDictionary? = nil, httpMethod: HttpMethod = .post, encoding: ParameterEncoding = .json) {
         self.server = server
-        self.method = method
         self.headers = headers
         self.parameters = parameters
         self.httpMethod = httpMethod
@@ -63,8 +61,12 @@ extension Resource {
         }
     }
     
-    public init(server: Server, method: NetworkMethod) {
-        self.init(server: server, method: method.method, parameters: method.parameters)
+    /**
+     Initializer for Web3 calls
+     */
+    public init(server: Server, method: Web3Method, id: Int = 1) throws {
+        let parameters = try method.parameters(id: id)
+        self.init(server: server, parameters: parameters)
     }
 }
 

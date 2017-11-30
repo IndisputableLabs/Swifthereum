@@ -1,6 +1,6 @@
 //
-//  Rpc.swift
-//  UnitTests
+//  RpcRequest.swift
+//  Swifthereum
 //
 //  Created by Ronald Mannak on 10/24/17.
 //  Copyright © 2017 Indisputable Labs. All rights reserved.
@@ -11,7 +11,6 @@ import Foundation
 infix operator ∆
 
 // TODO: Change back to Codable
-public typealias ParamsByName = [String: String] // [String: Codable]
 public typealias ParamsByPosition = [String] //[Codable]
 
 /**
@@ -25,7 +24,7 @@ public typealias ParamsByPosition = [String] //[Codable]
  - http://www.jsonrpc.org/specification
  - https://en.wikipedia.org/wiki/JSON-RPC
  */
-public struct Rpc: Codable {
+public struct RpcRequest: Codable {
     
     /// JSON RPC version, must be "2.0"
     public let jsonrpc = "2.0"
@@ -40,7 +39,7 @@ public struct Rpc: Codable {
     public let id: Int
 }
 
-extension Rpc {
+extension RpcRequest {
     
     /// Initializer for byPosition parameters
     public init(method: String, params: ParamsByPosition? = nil, id: Int = 0) {
@@ -49,17 +48,17 @@ extension Rpc {
     }
     
     // Initializer for byName parameters
-    public init(method: String, params: ParamsByName? = nil, id: Int = 0) {
-        let p: ParamsByName? = params ?? nil
+    public init(method: String, params: JSONDictionary? = nil, id: Int = 0) {
+        let p: JSONDictionary? = params ?? nil
         self.init(method: method, params: p, id: id)
     }
 }
 
 
 // See https://medium.com/@hllmandel/codable-enum-with-associated-values-swift-4-e7d75d6f4370
-extension Rpc: Equatable {
+extension RpcRequest: Equatable {
     
-    public static func == (lhs: Rpc, rhs: Rpc) -> Bool {
+    public static func == (lhs: RpcRequest, rhs: RpcRequest) -> Bool {
         return
             lhs.params ==? rhs.params &&
             lhs.jsonrpc == rhs.jsonrpc &&
@@ -71,7 +70,7 @@ extension Rpc: Equatable {
      Returns Delta / Difference between two Rpc structs in human readable string format.
      Used in unit tests.
      */
-    public static func ∆ (lhs: Rpc, rhs: Rpc) -> String? {
+    public static func ∆ (lhs: RpcRequest, rhs: RpcRequest) -> String? {
         guard lhs != rhs else { return nil }
         var string = "Delta: "
         if lhs.jsonrpc != rhs.jsonrpc {
@@ -93,8 +92,7 @@ extension Rpc: Equatable {
  */
 public enum RpcParams { //: Equatable {
     case byPosition(ParamsByPosition)
-    case byName(ParamsByName)
-//    case empty
+    case byName(JSONDictionary)
 }
 
 extension RpcParams: Codable {
@@ -109,26 +107,14 @@ extension RpcParams: Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-//        if container.decodeNil() {
-//            self = .empty
-//        }
+
         do {
             let array = try container.decode(ParamsByPosition.self)
             self = .byPosition(array)
         } catch {
-            let dict = try container.decode(ParamsByName.self)
+            let dict = try container.decode(JSONDictionary.self)
             self = .byName(dict)
         }
-        
-        /*
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        if let optionalArray = try? container.decodeIfPresent(ParamsByPosition.self, forKey: .params), let array = optionalArray {
-            self = .byPosition(array)
-        } else if let dict = try container.decodeIfPresent(ParamsByName.self, forKey: .params) {
-            self = .byName(dict)
-        } else {
-            throw RpcParamsError.decoding("Could not decode \(decoder)")
-        }*/
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -139,16 +125,6 @@ extension RpcParams: Codable {
         case .byName(let dict):
             try container.encode(dict)
         }
-        /*
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        switch self {
-        case .byPosition(let array):
-            try container.encode(array, forKey: .params)
-        case .byName(let dict):
-            try container.encode(dict, forKey: .params)
-        case .empty:
-            break
-        } */
     }
 }
 
@@ -159,8 +135,6 @@ extension RpcParams: CustomStringConvertible {
             return "[\(array)]"
         case .byName(let dict):
             return "{\(dict)}"
-//        case .empty:
-//            return "[]"
         }
     }
 }
@@ -170,6 +144,7 @@ extension RpcParams: Equatable {
         switch (lhs, rhs) {
         case let (.byPosition(l), .byPosition(r)):
             return l == r
+            
         case let (.byName(l), .byName(r)):
             return l == r
             

@@ -17,7 +17,7 @@ extension BigIntWrapper {
     }
 }
 
-extension NetworkMethod {
+extension Web3Method {
  
     /**
      Literal response from Geth node.

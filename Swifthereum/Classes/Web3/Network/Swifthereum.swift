@@ -18,10 +18,10 @@ public class Swifthereum {
         self.provider = provider
     }
     
-    public func fetch<A: Decodable>(method: NetworkMethod, completion: @escaping (Result<A>) -> ()) throws {
+    public func fetch<A: Decodable>(method: Web3Method, completion: @escaping (Result<A>) -> ()) throws {
         switch provider {
         case .web3(let server):
-            let resource = Resource<Web3Result<A>>(server: server, method: method)
+            let resource = try Resource<RpcResponse<A>>(server: server, method: method)
             try NetworkService().load(resource: resource, debug: true) { result in
                 
                 /*
@@ -204,7 +204,7 @@ extension Swifthereum {
      TODO: Change back to BigInt. Issue is that result is hex ("0x317604574664c00")
      */
     public func balance(for address: Address, defaultBlock: DefaultBlock = .latest, completion: @escaping (Result<Wei>) -> ()) throws {
-        let method = NetworkMethod.balance(address, defaultBlock)
+        let method = Web3Method.balance(address, defaultBlock)
         try fetch(method: method) { (result: Result<BigIntWrapper>) in
             completion(self.unwrap(result))
         }

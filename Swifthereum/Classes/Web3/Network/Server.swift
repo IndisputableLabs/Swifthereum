@@ -12,13 +12,13 @@ public struct Server {
     
     public let domain: String      // E.g. "http://localhost:8545"
     public var headers: JSONDictionary? = nil
-    public var defaultParameters: JSONDictionary = ["jsonrpc" : "2.0", "id": 1]
+    public var defaultParameters: JSONDictionary = [:]
 }
 
 
 extension Server {
     /**
-     Initializes domain to default localhost.
+     Initializes domain to default localhost running Geth.
      
      Initializer located in extension, so we don't override the default initializer 
      */

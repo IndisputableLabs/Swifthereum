@@ -20,16 +20,9 @@ extension URLRequest {
         
         var endPoint = resource.server.domain
         let parameters: JSONDictionary = {
-            // Merges the server's default parameters with the method parameter and the resource specific parameters
-            let methodParameter: JSONDictionary = ["method" : resource.method]
+            let messageParameters: JSONDictionary? = resource.parameters
             var serverParameters: JSONDictionary = resource.server.defaultParameters
-            serverParameters = serverParameters.merge(with: methodParameter)
-            if let parameters = resource.parameters {
-//                let encoder = JSONEncoder()
-//                let encodedParameters = encoder.encode(parameters)
-                let messageParameters: JSONDictionary = ["params" : parameters]
-                serverParameters = serverParameters.merge(with: messageParameters)
-            }
+            serverParameters = serverParameters.merge(with: messageParameters)
             return serverParameters
         }()
         var body: Data? = nil
@@ -38,7 +31,7 @@ extension URLRequest {
             body = parameters.jsonEncodedData
         case .url:
             if let parameters = parameters.urlEncodedString {
-                print("parameters: \(parameters)")
+                //print("parameters: \(parameters)")
                 endPoint += "?\(parameters)"
             }
         case .body:

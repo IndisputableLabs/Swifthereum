@@ -69,3 +69,7 @@ extension Dictionary {
         return self
     }
 }
+
+public func ==<K, V>(lhs: [K: V], rhs: [K: V] ) -> Bool {
+    return (lhs as NSDictionary).isEqual(to: rhs)
+}

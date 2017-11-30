@@ -43,7 +43,7 @@ public enum DefaultBlock {
         else if string == "earliest" { self = .earliest }
         else if let number = BlockNumber(string) { self = .number(number) }
         else if let number = Int64(hex: string) { self = .number(number) }
-        else { throw SwifthereumError.encodingError }
+        else { throw SwifthereumError.encodingError("Can not convert \"\(string)\" to valid default block") }
     }
 }
 

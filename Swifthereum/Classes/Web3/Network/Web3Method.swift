@@ -1,5 +1,5 @@
 //
-//  NetworkMethod.swift
+//  Web3Method.swift
 //  Swifthereum
 //
 //  Created by Ronald Mannak on 10/19/17.
@@ -9,8 +9,10 @@ import Foundation
 
 /**
  https://github.com/ethereum/wiki/wiki/JSON-RPC
+
+ 
  */
-public enum NetworkMethod {
+public enum Web3Method {
     
     // Web3
     case clientVersion
@@ -85,7 +87,7 @@ public enum NetworkMethod {
     case sshGetMessages // ()..
 }
 
-extension NetworkMethod {
+extension Web3Method {
     public var method: String {
         switch self {
         case .clientVersion:                    return "web3_clientVersion"
@@ -130,10 +132,10 @@ extension NetworkMethod {
         case .newBlockNotification:             return "eth_newBlockFilter"
         case .newPendingTransactionNotification:return "eth_newPendingTransactionFilter"
         case .uninstallNotification:            return "eth_uninstallFilter"
-        case .notificationChanges:           return "eth_getFilterChanges"
-        case .notificationLogs:              return "eth_getFilterLogs"
-        case .logs:                          return "eth_getLogs"
-        case .work:                          return "eth_getWork"
+        case .notificationChanges:              return "eth_getFilterChanges"
+        case .notificationLogs:                 return "eth_getFilterLogs"
+        case .logs:                             return "eth_getLogs"
+        case .work:                             return "eth_getWork"
         case .submitWork:                       return "eth_submitWork"
         case .submitHashrate:                   return "eth_submitHashrate"
         case .putString:                        return "db_putString"
@@ -143,7 +145,7 @@ extension NetworkMethod {
         case .sshVersion:                       return "shh_version"
         case .sshPost:                          return "shh_post"
         case .sshNewIdentity:                   return "shh_newIdentity"
-        case .sshHasIdentity:                    return "shh_hasIdentity"
+        case .sshHasIdentity:                   return "shh_hasIdentity"
         case .sshNewGroup:                      return "shh_newGroup"
         case .sshAddToGroup:                    return "shh_addToGroup"
         case .sshNewFilter:                     return "shh_newFilter"
@@ -154,55 +156,73 @@ extension NetworkMethod {
     }
 }
 
-extension NetworkMethod {
+extension Web3Method {
     
-    /// TODO: can we return a single Encodable instead of an array and have URLRequest encode the data and wrap it in an array?
-    public var parameters: [Encodable?] {
+    /**
+     Returns the JSON-RCP request in JSONDictionary format.
+     
+     E.g.: ```{"jsonrpc":"2.0","method":"web3_sha3","params":["0x68656c6c6f20776f726c64"],"id":64}```
+     
+     - parameter id:
+        Value will be included in the returned RpcResponse. Used to distinguish requests.
+     */
+    public func parameters(id: Int = 1) throws -> JSONDictionary {
+        
+        let rpcParams: RpcParams
+        
         switch self {
         case .sha3(let string):
-            return [string]
-        case .balance(let address, let defaultBlock):
-            return [String(describing: address), defaultBlock.value]
-//        case .storage(let address, let defaultBlock):
-//            return [String(describing: address), defaultBlock.value]
-        case .transactionCount(let address, let defaultBlock):
-            return [String(describing: address), defaultBlock.value]
-        case .blockTransactionCount(let blockHash):
-            return [String(describing: blockHash)]
-        case .blockTransactionCountByNumber(let defaultBlock):
-//            let encoder = JSONEncoder()
-//            let encodedParameters = try! encoder.encode(defaultBlock)
-//            return [encodedParameters]
-            return [defaultBlock.value]            
-        case .uncleCount(let blockHash):
-            return [String(describing: blockHash)]
-        case .uncleCountByBlockNumber(let defaultBlock):
-            return [defaultBlock.value]
-        case .code(let address, let defaultBlock):
-            return [String(describing: address), defaultBlock.value]
-        case .sign(let address, let message):
-            return [String(describing: address), String(describing: message)]
-        case .sendTransaction(let transaction):
-            let encoder = JSONEncoder()
-            guard let data = try? encoder.encode(transaction), let string = String(data: data, encoding: .utf8) else {
-                fatalError() // fix
-            }
+            rpcParams = .byPosition([string])
             
-            print(string)
-            return [string]
+        case .balance(let address, let defaultBlock):
+            rpcParams = .byPosition([String(describing: address), defaultBlock.value])
+            
+//        case .storage(let address, let defaultBlock):
+//            rpcParams = .byPosition([String(describing: address), defaultBlock.value])
+        
+        case .transactionCount(let address, let defaultBlock):
+            rpcParams = .byPosition([String(describing: address), defaultBlock.value])
+
+        case .blockTransactionCount(let blockHash):
+            rpcParams = .byPosition([String(describing: blockHash)])
+            
+        case .blockTransactionCountByNumber(let defaultBlock):
+            rpcParams = .byPosition([defaultBlock.value])
+            
+        case .uncleCount(let blockHash):
+            rpcParams = .byPosition([String(describing: blockHash)])
+
+        case .uncleCountByBlockNumber(let defaultBlock):
+            rpcParams = .byPosition([defaultBlock.value])
+            
+        case .code(let address, let defaultBlock):
+            rpcParams = .byPosition([String(describing: address), defaultBlock.value])
+            
+        case .sign(let address, let message):
+            rpcParams = .byPosition([String(describing: address), String(describing: message)])
+            
+        case .sendTransaction(let transaction):
+            let dict = try transaction.asDictionary()
+            rpcParams = .byName(dict)
+
         case .transaction(let hash):
-            return [String(describing: hash)]
+            rpcParams = .byPosition([String(describing: hash)])
+            
         case .sshPost(let post):
-            return [post]
-//            let encoder = JSONEncoder()
-//            let encoded = try? encoder.encode(post)
-//            print(encoded!)
-//            return try? encoder.encode(post)
+            let dict = try post.asDictionary()
+            rpcParams = .byName(dict)
+
         case .sshUninstallFilter(let filterID):
-            return ["\(filterID.hexValue)"]
+            rpcParams = .byPosition(["\(filterID.hexValue)"])
+            
         default:
-            return [String]()
+            rpcParams = .byPosition([])
         }
+        
+        // Create RPC Request and return the request as a dictionary
+        let request = RpcRequest(method: method, params: rpcParams, id: id)
+        let dict = try request.asDictionary()
+        return dict
     }
 }
 
