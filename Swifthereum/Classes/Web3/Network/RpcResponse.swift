@@ -1,5 +1,5 @@
 //
-//  RpcResponse.swift
+//  RPCResponse.swift
 //  Swifthereum
 //
 //  Created by Ronald Mannak on 7/24/17.
@@ -14,7 +14,7 @@ import Foundation
  An error looks like this: {"jsonrpc":"2.0","id":1,"error":{"code":-32602,"message":"eth_GetTransactionByHash expects 1 parameters, got 0"}}
  No HTTP error codes are sent by Ethereum.
  */
-public struct RpcResponse<A: Decodable>: Decodable {
+public struct RPCResponse<A: Decodable>: Decodable {
 
     public let jsonrpc: String // TODO: Change to Rpc?
     public let id: Int
