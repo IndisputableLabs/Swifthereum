@@ -23,8 +23,7 @@ infix operator ∆
  - http://www.jsonrpc.org/specification
  - https://en.wikipedia.org/wiki/JSON-RPC
  */
-public struct RPCRequest<T: Codable>: Codable  { // T also needs to be Equatable, 
-//public struct RPCRequest: Codable  {
+public struct RPCRequest: Codable  {
     
     /// JSON RPC version, must be "2.0"
     public let jsonrpc = "2.0"
@@ -33,11 +32,22 @@ public struct RPCRequest<T: Codable>: Codable  { // T also needs to be Equatable
     public let method: String
     
     /// parameters in either an array (byPosition, e.g. "[]") or dictionary (byName)
-//    public let params: RPCParameters
-    public let params: Codable // <- just link the struct like NewMessage here and let NewMessage encode/decode the info, perhaps also RPCResponse type?
+    public let params: RPCParameters
     
     /// id is returned in the corresponding response object. Can be set to any integer
     public let id: Int
+    
+    /**
+     returns the full RPC dictionary (e.g. ["jsonrpc": 2.0, "method": ...])
+     */
+    public var dictionary: JSONDictionary {        
+        return [
+            "jsonrpc" : jsonrpc,
+            "method" :  method,
+            "params" :  params.parametersValue(),
+            "id" :      id,
+        ]
+    }
 }
 
 extension RPCRequest {
@@ -50,19 +60,6 @@ extension RPCRequest {
     // Initializer for byName parameters
     public init(method: String, params: JSONDictionary? = nil, id: Int = 0) {
         self.init(method: method, params: RPCParameters(byName: params), id: id)
-    }
-    
-    // TODO: fix
-    /**
-     quick hack. Encodable.asDictionary() can't encode as JSONDictionary
-     */
-    var dictionary: JSONDictionary {
-        return [
-            "jsonrpc" :     jsonrpc,
-            "method" :      method,
-            "params" :     params.description,
-            "id" :          id,
-        ]
     }
 }
 
