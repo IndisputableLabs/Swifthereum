@@ -166,9 +166,9 @@ extension Web3Method {
      - parameter id:
         Value will be included in the returned RpcResponse. Used to distinguish requests.
      */
-    public func parameters(id: Int = 1) throws -> JSONDictionary {
+    public func requestDictionary(id: Int = 1) throws -> JSONDictionary {
         
-        let rpcParams: RpcParams
+        let rpcParams: RPCParameters
         
         switch self {
         case .sha3(let string):
@@ -220,8 +220,8 @@ extension Web3Method {
         }
         
         // Create RPC Request and return the request as a dictionary
-        let request = RpcRequest(method: method, params: rpcParams, id: id)
-        let dict = try request.asDictionary()
+        let request = RPCRequest(method: method, params: rpcParams, id: id)
+        let dict = request.dictionary
         return dict
     }
 }

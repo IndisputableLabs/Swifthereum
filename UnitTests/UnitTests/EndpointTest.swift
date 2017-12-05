@@ -34,13 +34,13 @@ class EndpointTest: XCTestCase {
     // web3 calls
     func testClientVersion() throws { try endpoint(for: .clientVersion) }
     func testSha3() throws { try endpoint(for: .sha3("0x68656c6c6f20776f726c64")) }
-
-    // Net calls
+//
+//    // Net calls
     func testNetworkdID() throws { try endpoint(for: .networkID) }
     func testPeerCount() throws { try endpoint(for: .peerCount) }
     func testListening() throws { try endpoint(for: .listening) }
-
-    // Ethereum calls
+//
+//    // Ethereum calls
     func testProtocolVersion() throws { try endpoint(for: .protocolVersion) }
     func testIsSyncing() throws { try endpoint(for: .isSyncing) }
     func testCoinbase() throws { try endpoint(for: .coinbase) }
@@ -73,10 +73,10 @@ class EndpointTest: XCTestCase {
     func testCode5() throws { try endpoint(for: .code(Address(hex: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b")!, .genesis)) }
 
     func testSign() throws { try endpoint(for: .sign(Address(hex: "0x9b2055d370f73ec7d8a03e965129118dc8f5bf83")!, Hash(hex: "0xdeadbeaf")!))}
-//    func testSendTransaction() throws {
-//        let transaction = NewTransaction(from: Address(hex: "0xb60e8dd61c5d32be8058bb8eb970870f07233155")!, to: Address(hex: "0xd46e8dd67c5d32be8058bb8eb970870f07244567")!, gas: 30400, gasPrice: 10000000000000, value: 2441406250, data: Hash(hex: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"))
-//        try endpoint(for: .sendTransaction(transaction))
-//    }
+    func testSendTransaction() throws {
+        let transaction = NewTransaction(from: Address(hex: "0xb60e8dd61c5d32be8058bb8eb970870f07233155")!, to: Address(hex: "0xd46e8dd67c5d32be8058bb8eb970870f07244567")!, gas: 30400, gasPrice: 10000000000000, value: 2441406250, data: Hash(hex: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"))
+        try endpoint(for: .sendTransaction(transaction))
+    }
     
     
     /*
@@ -180,8 +180,8 @@ class EndpointTest: XCTestCase {
         try endpoint(for: .sshPost(post))
     } */            
     
-    func testSshVersion() throws { try endpoint(for: .sshVersion) }
-    func testSshNewIdentity() throws { try endpoint(for: .sshNewIdentity) }
+//    func testSshVersion() throws { try endpoint(for: .sshVersion) }
+//    func testSshNewIdentity() throws { try endpoint(for: .sshNewIdentity) }
     /*func testSshHasIdentity() throws { try endpoint(for: .sshHasIdentity) }
     func testSshNewGroup() throws { try endpoint(for: .sshNewGroup) }
     func testSshAddToGroup() throws { try endpoint(for: .sshAddToGroup) }
@@ -191,6 +191,7 @@ class EndpointTest: XCTestCase {
     func testSshGetMessages() throws { try endpoint(for: .sshGetMessages) }
     */
     // test if error in a parameter dictionary is detected
+    
     func testSanity() throws {
         
         // Invalid method
@@ -214,17 +215,17 @@ class EndpointTest: XCTestCase {
         {"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":2}
         """
         
-        let invalid1 = try JSONDecoder().decode(RpcRequest.self, from: invalidParameterString.data(using: .utf8)!)
+        let invalid1 = try JSONDecoder().decode(RPCRequest.self, from: invalidParameterString.data(using: .utf8)!)
 //        let invalid2 = try JSONDecoder().decode(Rpc.self, from: invalidParameterString2.data(using: .utf8)!)
-        let invalid3 = try JSONDecoder().decode(RpcRequest.self, from: invalidParameterString3.data(using: .utf8)!)
-        let valid = try JSONDecoder().decode(RpcRequest.self, from: validParameterString.data(using: .utf8)!)
+        let invalid3 = try JSONDecoder().decode(RPCRequest.self, from: invalidParameterString3.data(using: .utf8)!)
+        let valid = try JSONDecoder().decode(RPCRequest.self, from: validParameterString.data(using: .utf8)!)
         
-        let resource = try Resource<RpcResponse<String>>(server: server, method: .clientVersion)
+        let resource = try Resource<RPCResponse<String>>(server: server, method: .clientVersion)
         let urlRequest = try URLRequest(resource: resource)
         
         // Decode body parameters and expected body parameters as Parameter struct so we can compare both
         guard let bodyData = urlRequest.httpBody else { throw UnexpectedNilError() }
-        let body = try JSONDecoder().decode(RpcRequest.self, from: bodyData)
+        let body = try JSONDecoder().decode(RPCRequest.self, from: bodyData)
         
         XCTAssertNotEqual(invalid1, body, "1: \(invalid1) is equal to \(body)")
 //        XCTAssertNotEqual(invalid2, body, "2: \(invalid2) is equal to \(body)")
@@ -233,16 +234,16 @@ class EndpointTest: XCTestCase {
     }
     
     func endpoint(for method: Web3Method) throws {
-        let resource = try Resource<RpcResponse<String>>(server: server, method: method)
+        let resource = try Resource<RPCResponse<String>>(server: server, method: method)
         let urlRequest = try URLRequest(resource: resource)
         
         // Decode body parameters and expected body parameters as Parameter struct so we can compare both
         guard let bodyData = urlRequest.httpBody else { throw UnexpectedNilError() }
         print(String(data:bodyData, encoding: .utf8)!) // body data is escaping "'s why? ONLY PARAMS??
-        let body = try JSONDecoder().decode(RpcRequest.self, from: bodyData)
+        let body = try JSONDecoder().decode(RPCRequest.self, from: bodyData)
         
         guard let expectedData = method.expectedBody.data(using: .utf8) else { throw UnexpectedNilError() }
-        let expectedBody = try JSONDecoder().decode(RpcRequest.self, from: expectedData)
+        let expectedBody = try JSONDecoder().decode(RPCRequest.self, from: expectedData)
         
         XCTAssertEqual(urlRequest.httpMethod, method.expectedHttpMethod, "Failed: httpMethod for \(String(describing: method)) is \(urlRequest.httpMethod ?? "nil")")
         XCTAssertEqual(urlRequest.url, URL(string: "http://localhost:8545"), "Failed: url for \(String(describing: method)) is \(String(describing: urlRequest.url))")

@@ -18,10 +18,9 @@ public enum HttpMethod: String {
 }
 
 public enum ParameterEncoding {
+    /// Encodes parameters in JSON format
     case json
-    /// Only use for GET, DELETE, and HEAD methods
     case url
-    /// Only use for POST, PUT, PATCH methods
     case body
     
     public func contentType() -> String {
@@ -38,9 +37,16 @@ public struct Resource<A: Decodable> {
     
     public let server: Server
     public let headers: JSONDictionary?
-    public let parameters: JSONDictionary?
+    private let requestParameters: JSONDictionary?
     public let httpMethod: HttpMethod
     public let encoding: ParameterEncoding
+    
+    /// Merge server and request parameters
+    public var parameters: JSONDictionary {
+        var mergedParameters = server.defaultParameters
+        return mergedParameters.merge(with: requestParameters)
+    } 
+    
     /**
          Called by NetworkService to parse the data returned from the server. Depending on the kind of data we expect (e.g. JSON vs an image) we can set a suitable closure in the init.
      */
@@ -52,21 +58,13 @@ extension Resource {
     public init(server: Server, parameters: JSONDictionary? = nil, headers: JSONDictionary? = nil, httpMethod: HttpMethod = .post, encoding: ParameterEncoding = .json) {
         self.server = server
         self.headers = headers
-        self.parameters = parameters
+        self.requestParameters = parameters
         self.httpMethod = httpMethod
         self.encoding = encoding
         parse = { data in            
             let encodedData = try JSONDecoder().decode(A.self, from: data)
             return encodedData
         }
-    }
-    
-    /**
-     Initializer for Web3 calls
-     */
-    public init(server: Server, method: Web3Method, id: Int = 1) throws {
-        let parameters = try method.parameters(id: id)
-        self.init(server: server, parameters: parameters)
     }
 }
 

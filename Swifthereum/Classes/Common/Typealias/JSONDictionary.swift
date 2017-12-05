@@ -8,10 +8,9 @@
 
 import Foundation
 
-public typealias JSONDictionary = [AnyHashable: Any]
+public typealias JSONDictionary = [String: Codable]
 
-extension Dictionary {
-//extension Sequence where Iterator.Element == JSONDictionary {
+extension Dictionary where Key == String, Value == Codable {
 
     /**
      Returns a URL ecoded String for use in URL parameters. E.g.: "appId=1234&query=56789".
@@ -21,10 +20,6 @@ extension Dictionary {
         
         var encodedArray = [String]()
         for (key, value) in self {
-            guard let key = key as? NSString else {
-                assertionFailure("Parsing error")
-                return nil
-            }
             guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
                 assertionFailure("Parsing error")
                 return nil

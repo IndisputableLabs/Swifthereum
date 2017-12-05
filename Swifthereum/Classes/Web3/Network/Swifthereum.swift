@@ -21,7 +21,7 @@ public class Swifthereum {
     public func fetch<A: Decodable>(method: Web3Method, completion: @escaping (Result<A>) -> ()) throws {
         switch provider {
         case .web3(let server):
-            let resource = try Resource<RpcResponse<A>>(server: server, method: method)
+            let resource = try Resource<RPCResponse<A>>(server: server, method: method)
             try NetworkService().load(resource: resource, debug: true) { result in
                 
                 /*
